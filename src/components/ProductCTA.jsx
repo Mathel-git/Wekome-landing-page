@@ -156,7 +156,7 @@ function ProductCTA() {
 
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/${productData.whatsapp}`}
+              href="https://wa.me/08162409010"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-purple-700 shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"

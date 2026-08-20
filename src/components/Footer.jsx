@@ -107,7 +107,7 @@ function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/2348162409010"
+                href="https://wa.me/08162409010"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gray-300 transition duration-300 hover:-translate-y-1 hover:border-[#25D366]/40 hover:bg-[#25D366]/10 hover:text-white"
@@ -208,7 +208,7 @@ function Footer() {
                 </a>
               </div>
 
-              <div>
+        ]      <div>
                 <p className="text-[9px] uppercase tracking-wider text-gray-600">
                   Product
                 </p>

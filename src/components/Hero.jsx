@@ -148,9 +148,9 @@ function Hero() {
           className="
             relative
             z-30
-            w-[59%]
+            w-[56%]
             pt-8
-            sm:w-[57%]
+            sm:w-[55%]
             sm:pt-12
             lg:w-full
             lg:max-w-[650px]
@@ -472,228 +472,309 @@ function Hero() {
           </div>
         </div>
 
-        {/* =====================================================
-            RIGHT SIDE — POWERBANK + INFORMATION
+       {/* =====================================================
+    RIGHT SIDE PRODUCT COMPOSITION
+    MOBILE:
+    - Powerbank sits beside the left content
+    - Information sits immediately to its RIGHT
+    - Nothing drops underneath
+===================================================== */}
 
-            IMPORTANT:
-            This remains a RIGHT-SIDE composition on MOBILE.
-        ====================================================== */}
+<div
+  className="
+    pointer-events-none
+    absolute
+    right-0
+    top-[105px]
+    z-20
+    h-[570px]
+    w-[47%]
 
+    sm:top-[110px]
+    sm:h-[650px]
+    sm:w-[48%]
+
+    lg:relative
+    lg:right-auto
+    lg:top-auto
+    lg:h-[650px]
+    lg:w-full
+  "
+>
+  {/* PRODUCT GLOW */}
+
+  <div
+    className="
+      absolute
+      left-[38%]
+      top-[48%]
+      h-[230px]
+      w-[150px]
+      -translate-x-1/2
+      -translate-y-1/2
+      rounded-full
+      bg-purple-600/30
+      blur-[80px]
+
+      sm:h-[350px]
+      sm:w-[240px]
+
+      lg:h-[430px]
+      lg:w-[330px]
+    "
+  />
+
+  {/* =================================================
+      POWERBANK
+
+      IMPORTANT:
+      This is positioned toward the CENTER of the
+      right-side area, NOT at the bottom.
+  ================================================== */}
+
+  <div
+    className="
+      absolute
+      left-[4%]
+      top-[120px]
+      z-20
+      flex
+      items-center
+      justify-center
+
+      sm:left-[3%]
+      sm:top-[125px]
+
+      lg:inset-0
+    "
+  >
+    <img
+      src="/images/products/powerbank-hero.png"
+      alt="WEKOME WP-66 20,000mAh Power Bank"
+      className="
+        h-auto
+        w-[125px]
+        max-w-none
+        object-contain
+        drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
+
+        sm:w-[175px]
+
+        lg:w-full
+        lg:max-w-[520px]
+      "
+    />
+  </div>
+
+  {/* =================================================
+      20,000mAh CARD
+
+      SITS ABOVE / TO THE RIGHT OF POWERBANK
+  ================================================== */}
+
+  <div
+    className="
+      absolute
+      right-0
+      top-[55px]
+      z-30
+      w-[82px]
+      rounded-lg
+      border
+      border-purple-400/30
+      bg-black/70
+      p-2
+      backdrop-blur-xl
+
+      sm:top-[50px]
+      sm:w-[120px]
+      sm:p-3
+
+      lg:right-0
+      lg:top-[12%]
+      lg:w-[190px]
+      lg:p-5
+    "
+  >
+    <div className="flex items-end gap-1">
+      <span
+        className="
+          text-[14px]
+          font-black
+
+          sm:text-xl
+          lg:text-3xl
+        "
+      >
+        {productData.capacity}
+      </span>
+
+      <span
+        className="
+          mb-0.5
+          text-[6px]
+          font-bold
+          text-purple-400
+
+          sm:text-[9px]
+          lg:text-sm
+        "
+      >
+        {productData.capacityUnit}
+      </span>
+    </div>
+
+    <p
+      className="
+        mt-1
+        text-[4px]
+        uppercase
+        tracking-[0.15em]
+        text-gray-500
+
+        sm:text-[6px]
+        lg:text-[9px]
+      "
+    >
+      Real Capacity
+    </p>
+
+    <div className="mt-1 h-px bg-white/10" />
+
+    <p
+      className="
+        mt-1
+        text-[5px]
+        leading-3
+        text-gray-300
+
+        sm:text-[7px]
+        lg:text-xs
+      "
+    >
+      More power.
+      <br />
+      Less worry.
+    </p>
+  </div>
+
+  {/* =================================================
+      BENEFITS
+
+      THIS IS THE PART THAT MUST BE BESIDE THE
+      POWERBANK ON MOBILE.
+  ================================================== */}
+
+  <div
+    className="
+      absolute
+      right-0
+      top-[185px]
+      z-30
+      w-[85px]
+      space-y-5
+
+      sm:top-[185px]
+      sm:w-[120px]
+      sm:space-y-6
+
+      lg:top-auto
+      lg:right-0
+      lg:bottom-4
+      lg:w-[220px]
+      lg:space-y-4
+    "
+  >
+    {productData.benefits.slice(0, 4).map((benefit) => {
+      const Icon = iconMap[benefit.icon];
+
+      return (
         <div
+          key={benefit.title}
           className="
-            pointer-events-none
-            absolute
-            right-0
-            top-[105px]
-            z-20
-            h-[560px]
-            w-[48%]
+            flex
+            items-start
+            gap-1.5
 
-            sm:top-[110px]
-            sm:h-[650px]
+            sm:gap-2.5
 
-            lg:relative
-            lg:right-auto
-            lg:top-auto
-            lg:h-[650px]
-            lg:w-full
+            lg:gap-3
           "
         >
-
-          {/* Product glow */}
-
-          <div
-            className="
-              absolute
-              left-[25%]
-              top-[38%]
-              h-[220px]
-              w-[150px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-purple-600/30
-              blur-[70px]
-              sm:h-[350px]
-              sm:w-[260px]
-              sm:blur-[100px]
-              lg:h-[430px]
-              lg:w-[330px]
-            "
-          />
-
-          {/* =================================================
-              POWERBANK
-          ================================================== */}
+          {/* Icon */}
 
           <div
             className="
-              absolute
-              left-0
-              top-[185px]
               flex
+              h-6
+              w-6
+              shrink-0
               items-center
               justify-center
-              sm:top-[190px]
-              lg:inset-0
+              rounded-full
+              border
+              border-purple-500/30
+              bg-purple-500/10
+              text-purple-300
+
+              sm:h-8
+              sm:w-8
+
+              lg:h-9
+              lg:w-9
             "
           >
-            <img
-              src="/images/products/powerbank-hero.png"
-              alt="WEKOME WP-66 20,000mAh Power Bank"
+            <Icon
+              size={10}
               className="
-                h-auto
-                w-[105px]
-                max-w-none
-                object-contain
-                drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
-                sm:w-[150px]
-                lg:w-full
-                lg:max-w-[520px]
+                sm:h-3
+                sm:w-3
+                lg:h-4
+                lg:w-4
               "
             />
           </div>
 
-          {/* =================================================
-              CAPACITY CARD
-          ================================================== */}
+          {/* Text */}
 
-          <div
-            className="
-              absolute
-              right-0
-              top-[135px]
-              w-[75px]
-              rounded-lg
-              border
-              border-purple-400/30
-              bg-black/70
-              p-2
-              backdrop-blur-xl
+          <div className="min-w-0">
+            <p
+              className="
+                text-[5px]
+                font-bold
+                leading-tight
+                text-white
 
-              sm:top-[120px]
-              sm:w-[115px]
-              sm:p-3
+                sm:text-[7px]
 
-              lg:right-0
-              lg:top-[12%]
-              lg:w-[190px]
-              lg:p-5
-            "
-          >
-            <div className="flex items-end gap-1">
-              <span className="text-[14px] font-black sm:text-xl lg:text-3xl">
-                {productData.capacity}
-              </span>
-
-              <span className="mb-0.5 text-[6px] font-bold text-purple-400 sm:text-[9px] lg:text-sm">
-                {productData.capacityUnit}
-              </span>
-            </div>
-
-            <p className="mt-1 text-[4px] uppercase tracking-[0.15em] text-gray-500 sm:text-[6px] lg:text-[9px]">
-              Real Capacity
+                lg:text-[9px]
+              "
+            >
+              {benefit.title}
             </p>
 
-            <div className="mt-1 h-px bg-white/10" />
+            <p
+              className="
+                mt-0.5
+                text-[4px]
+                leading-[1.3]
+                text-gray-500
 
-            <p className="mt-1 text-[5px] leading-3 text-gray-300 sm:text-[7px] sm:leading-3 lg:text-xs">
-              More power.
-              <br />
-              Less worry.
+                sm:text-[6px]
+
+                lg:text-[8px]
+              "
+            >
+              {benefit.description}
             </p>
-          </div>
-
-          {/* =================================================
-              BENEFITS — NOW VISIBLE ON MOBILE
-              AND POSITIONED BESIDE THE POWERBANK
-          ================================================== */}
-
-          <div
-            className="
-              absolute
-              right-0
-              top-[230px]
-              w-[78px]
-              space-y-4
-
-              sm:top-[230px]
-              sm:w-[115px]
-              sm:space-y-5
-
-              lg:top-auto
-              lg:bottom-4
-              lg:w-[220px]
-              lg:space-y-4
-            "
-          >
-            {productData.benefits.slice(0, 4).map((benefit) => {
-              const Icon = iconMap[benefit.icon];
-
-              return (
-                <div
-                  key={benefit.title}
-                  className="flex items-start gap-1.5 sm:gap-2.5 lg:gap-3"
-                >
-                  <div
-                    className="
-                      flex
-                      h-6
-                      w-6
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-purple-500/30
-                      bg-purple-500/10
-                      text-purple-300
-
-                      sm:h-8
-                      sm:w-8
-
-                      lg:h-9
-                      lg:w-9
-                    "
-                  >
-                    <Icon size={10} className="sm:h-3 sm:w-3 lg:h-4 lg:w-4" />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p
-                      className="
-                        text-[5px]
-                        font-bold
-                        leading-tight
-                        text-white
-                        sm:text-[7px]
-                        lg:text-[9px]
-                      "
-                    >
-                      {benefit.title}
-                    </p>
-
-                    <p
-                      className="
-                        mt-0.5
-                        text-[4px]
-                        leading-2
-                        text-gray-500
-                        sm:text-[6px]
-                        lg:text-[8px]
-                      "
-                    >
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
+      );
+    })}
+  </div>
+</div>
       </div>
     </section>
   );
 }
-
 export default Hero;

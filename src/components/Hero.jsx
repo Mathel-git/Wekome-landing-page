@@ -29,7 +29,7 @@ function WhatsAppIcon({ size = 22 }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path d="M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5.0.18 5.32.18 11.87c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.86 11.86 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.4-8.42ZM12.06 21.77h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.87 9.87 0 1 1 8.39 4.65Zm5.41-7.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.14-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.27-.2-.57-.35Z" />
+      <path d="M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.86 11.86 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.4-8.42ZM12.06 21.77h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.87 9.87 0 1 1 8.39 4.65Zm5.41-7.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.14-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.27-.2-.57-.35Z" />
     </svg>
   );
 }
@@ -40,12 +40,12 @@ function Hero() {
       id="home"
       className="
         relative
-        min-h-[760px]
+        min-h-[700px]
         overflow-hidden
         bg-[#05040b]
         pt-[76px]
         text-white
-        sm:min-h-[820px]
+        sm:min-h-[780px]
         lg:min-h-screen
       "
     >
@@ -54,6 +54,7 @@ function Hero() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
+        {/* Main glow */}
         <div
           className="
             absolute
@@ -66,16 +67,19 @@ function Hero() {
             blur-[120px]
             sm:h-[650px]
             sm:w-[650px]
+            lg:-right-40
+            lg:top-20
           "
         />
 
+        {/* Lower glow */}
         <div
           className="
             absolute
-            bottom-[20px]
             right-[5%]
-            h-[320px]
-            w-[320px]
+            bottom-[20px]
+            h-[300px]
+            w-[300px]
             rounded-full
             bg-purple-600/15
             blur-[100px]
@@ -84,10 +88,11 @@ function Hero() {
           "
         />
 
+        {/* Rings */}
         <div
           className="
             absolute
-            -right-[320px]
+            -right-[300px]
             -top-[280px]
             h-[650px]
             w-[650px]
@@ -104,7 +109,7 @@ function Hero() {
         <div
           className="
             absolute
-            -right-[290px]
+            -right-[280px]
             -top-[250px]
             h-[600px]
             w-[600px]
@@ -120,7 +125,7 @@ function Hero() {
       </div>
 
       {/* =====================================================
-          HERO CONTAINER
+          MAIN HERO
       ====================================================== */}
 
       <div
@@ -128,18 +133,18 @@ function Hero() {
           relative
           z-10
           mx-auto
-          min-h-[684px]
+          min-h-[624px]
           max-w-[1440px]
           px-4
+          sm:min-h-[704px]
           sm:px-7
           lg:grid
           lg:min-h-[calc(100vh-76px)]
-          lg:grid-cols-2
+          lg:grid-cols-[1fr_1fr]
           lg:items-center
           lg:px-12
         "
       >
-
         {/* =====================================================
             LEFT CONTENT
         ====================================================== */}
@@ -148,17 +153,16 @@ function Hero() {
           className="
             relative
             z-30
-            w-[56%]
-            pt-8
-            sm:w-[55%]
-            sm:pt-12
+            w-[59%]
+            pt-7
+            sm:w-[57%]
+            sm:pt-10
             lg:w-full
             lg:max-w-[650px]
             lg:pt-6
           "
         >
-
-          {/* Badge */}
+          {/* Product badge */}
 
           <div className="mb-4 flex items-center gap-2 sm:mb-6 sm:gap-3">
             <span
@@ -185,6 +189,7 @@ function Hero() {
                 tracking-[0.12em]
                 text-gray-400
                 sm:text-xs
+                sm:tracking-[0.15em]
               "
             >
               {productData.series}
@@ -195,14 +200,14 @@ function Hero() {
 
           <h1
             className="
-              max-w-[250px]
-              text-[35px]
+              max-w-[330px]
+              text-[38px]
               font-black
-              leading-[0.92]
+              leading-[0.91]
               tracking-[-0.055em]
-              sm:max-w-[350px]
-              sm:text-[48px]
-              md:text-[60px]
+              sm:max-w-[430px]
+              sm:text-[54px]
+              md:text-[64px]
               lg:max-w-[700px]
               lg:text-[84px]
             "
@@ -229,14 +234,14 @@ function Hero() {
           <p
             className="
               mt-5
-              max-w-[240px]
-              text-[10px]
+              max-w-[310px]
+              text-[11px]
               leading-5
               text-gray-400
-              sm:max-w-[380px]
-              sm:text-sm
-              sm:leading-6
-              lg:max-w-[500px]
+              sm:mt-7
+              sm:max-w-[500px]
+              sm:text-base
+              sm:leading-7
               lg:text-lg
             "
           >
@@ -251,7 +256,7 @@ function Hero() {
             className="
               mt-7
               flex
-              w-full
+              w-[calc(100vw-32px)]
               max-w-[650px]
               justify-between
               gap-1
@@ -267,14 +272,14 @@ function Hero() {
               return (
                 <div
                   key={feature.title}
-                  className="min-w-0 flex-1"
+                  className="min-w-0 flex-1 sm:flex-none lg:flex-1"
                 >
                   <div
                     className="
                       mb-2
                       flex
-                      h-7
-                      w-7
+                      h-8
+                      w-8
                       items-center
                       justify-center
                       rounded-full
@@ -287,13 +292,16 @@ function Hero() {
                       lg:mb-3
                     "
                   >
-                    <Icon size={13} className="sm:h-[17px] sm:w-[17px]" />
+                    <Icon
+                      size={14}
+                      className="sm:h-[17px] sm:w-[17px]"
+                    />
                   </div>
 
                   <p
                     className="
                       truncate
-                      text-[6px]
+                      text-[7px]
                       font-bold
                       tracking-wide
                       text-white
@@ -307,10 +315,10 @@ function Hero() {
                     className="
                       mt-1
                       truncate
-                      text-[5px]
+                      text-[6px]
                       leading-3
                       text-gray-500
-                      sm:text-[8px]
+                      sm:text-[9px]
                       sm:leading-4
                     "
                   >
@@ -329,7 +337,7 @@ function Hero() {
             className="
               mt-7
               grid
-              w-full
+              w-[calc(100vw-32px)]
               max-w-[665px]
               grid-cols-3
               overflow-hidden
@@ -340,32 +348,32 @@ function Hero() {
               sm:mt-9
             "
           >
-            <div className="px-2 py-3 sm:px-5 sm:py-4">
-              <p className="text-[5px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
+            <div className="px-3 py-3 sm:px-5 sm:py-4">
+              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
                 Original Price
               </p>
 
-              <p className="mt-1 text-[11px] font-bold text-gray-400 line-through sm:text-lg">
+              <p className="mt-1 text-[13px] font-bold text-gray-400 line-through sm:text-lg">
                 {productData.originalPrice}
               </p>
             </div>
 
-            <div className="bg-purple-600/20 px-2 py-3 sm:px-5 sm:py-4">
-              <p className="text-[5px] uppercase tracking-wider text-purple-300 sm:text-[9px]">
+            <div className="bg-purple-600/20 px-3 py-3 sm:px-5 sm:py-4">
+              <p className="text-[6px] uppercase tracking-wider text-purple-300 sm:text-[9px]">
                 Promo Price
               </p>
 
-              <p className="mt-1 text-[14px] font-black text-yellow-300 sm:text-2xl">
+              <p className="mt-1 text-[17px] font-black text-yellow-300 sm:text-2xl">
                 {productData.promoPrice}
               </p>
             </div>
 
-            <div className="px-2 py-3 sm:px-5 sm:py-4">
-              <p className="text-[5px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
+            <div className="px-3 py-3 sm:px-5 sm:py-4">
+              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
                 You Save
               </p>
 
-              <p className="mt-1 text-[11px] font-bold text-white sm:text-lg">
+              <p className="mt-1 text-[13px] font-bold text-white sm:text-lg">
                 {productData.savings}
               </p>
             </div>
@@ -379,7 +387,7 @@ function Hero() {
             className="
               mt-5
               flex
-              w-full
+              w-[calc(100vw-32px)]
               max-w-[665px]
               gap-2
               sm:mt-7
@@ -398,7 +406,7 @@ function Hero() {
                 flex-1
                 items-center
                 justify-center
-                gap-1.5
+                gap-2
                 rounded-lg
                 bg-gradient-to-r
                 from-purple-600
@@ -406,6 +414,9 @@ function Hero() {
                 px-2
                 py-3
                 shadow-[0_0_30px_rgba(168,85,247,0.25)]
+                transition
+                duration-300
+                hover:-translate-y-1
                 sm:gap-3
                 sm:px-5
                 sm:py-4
@@ -429,11 +440,11 @@ function Hero() {
               </span>
 
               <span className="min-w-0 text-left">
-                <span className="block text-[5px] font-medium uppercase tracking-wider opacity-70 sm:text-[8px]">
+                <span className="block text-[6px] font-medium uppercase tracking-wider opacity-70 sm:text-[8px]">
                   Order Now on WhatsApp
                 </span>
 
-                <span className="block truncate text-[9px] font-bold sm:text-sm">
+                <span className="block truncate text-[10px] font-bold sm:text-sm">
                   08162409010
                 </span>
               </span>
@@ -445,336 +456,250 @@ function Hero() {
               href="#order"
               className="
                 flex
-                w-[85px]
+                w-[115px]
                 shrink-0
                 items-center
                 justify-center
-                gap-1
+                gap-2
                 rounded-lg
                 border
                 border-purple-500/30
                 bg-white/[0.03]
-                px-2
+                px-3
                 py-3
-                text-[7px]
+                text-[9px]
                 font-bold
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-purple-400/60
+                hover:bg-purple-500/10
                 sm:w-[165px]
-                sm:gap-2
                 sm:px-5
                 sm:py-4
                 sm:text-sm
               "
             >
-              <ShoppingBag size={14} />
-
+              <ShoppingBag size={15} />
               <span>SHOP NOW</span>
             </a>
           </div>
         </div>
 
-       {/* =====================================================
-    RIGHT SIDE PRODUCT COMPOSITION
-    MOBILE:
-    - Powerbank sits beside the left content
-    - Information sits immediately to its RIGHT
-    - Nothing drops underneath
-===================================================== */}
+        {/* =====================================================
+            RIGHT PRODUCT AREA
 
-<div
-  className="
-    pointer-events-none
-    absolute
-    right-0
-    top-[105px]
-    z-20
-    h-[570px]
-    w-[47%]
+            MOBILE:
+            - starts high, near WP-66
+            - large power bank
+            - remains beside left content
+            - benefits start around the heading
+        ====================================================== */}
 
-    sm:top-[110px]
-    sm:h-[650px]
-    sm:w-[48%]
-
-    lg:relative
-    lg:right-auto
-    lg:top-auto
-    lg:h-[650px]
-    lg:w-full
-  "
->
-  {/* PRODUCT GLOW */}
-
-  <div
-    className="
-      absolute
-      left-[38%]
-      top-[48%]
-      h-[230px]
-      w-[150px]
-      -translate-x-1/2
-      -translate-y-1/2
-      rounded-full
-      bg-purple-600/30
-      blur-[80px]
-
-      sm:h-[350px]
-      sm:w-[240px]
-
-      lg:h-[430px]
-      lg:w-[330px]
-    "
-  />
-
-  {/* =================================================
-      POWERBANK
-
-      IMPORTANT:
-      This is positioned toward the CENTER of the
-      right-side area, NOT at the bottom.
-  ================================================== */}
-
-  <div
-    className="
-      absolute
-      left-[4%]
-      top-[120px]
-      z-20
-      flex
-      items-center
-      justify-center
-
-      sm:left-[3%]
-      sm:top-[125px]
-
-      lg:inset-0
-    "
-  >
-    <img
-      src="/images/products/powerbank-hero.png"
-      alt="WEKOME WP-66 20,000mAh Power Bank"
-      className="
-        h-auto
-        w-[125px]
-        max-w-none
-        object-contain
-        drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
-
-        sm:w-[175px]
-
-        lg:w-full
-        lg:max-w-[520px]
-      "
-    />
-  </div>
-
-  {/* =================================================
-      20,000mAh CARD
-
-      SITS ABOVE / TO THE RIGHT OF POWERBANK
-  ================================================== */}
-
-  <div
-    className="
-      absolute
-      right-0
-      top-[55px]
-      z-30
-      w-[82px]
-      rounded-lg
-      border
-      border-purple-400/30
-      bg-black/70
-      p-2
-      backdrop-blur-xl
-
-      sm:top-[50px]
-      sm:w-[120px]
-      sm:p-3
-
-      lg:right-0
-      lg:top-[12%]
-      lg:w-[190px]
-      lg:p-5
-    "
-  >
-    <div className="flex items-end gap-1">
-      <span
-        className="
-          text-[14px]
-          font-black
-
-          sm:text-xl
-          lg:text-3xl
-        "
-      >
-        {productData.capacity}
-      </span>
-
-      <span
-        className="
-          mb-0.5
-          text-[6px]
-          font-bold
-          text-purple-400
-
-          sm:text-[9px]
-          lg:text-sm
-        "
-      >
-        {productData.capacityUnit}
-      </span>
-    </div>
-
-    <p
-      className="
-        mt-1
-        text-[4px]
-        uppercase
-        tracking-[0.15em]
-        text-gray-500
-
-        sm:text-[6px]
-        lg:text-[9px]
-      "
-    >
-      Real Capacity
-    </p>
-
-    <div className="mt-1 h-px bg-white/10" />
-
-    <p
-      className="
-        mt-1
-        text-[5px]
-        leading-3
-        text-gray-300
-
-        sm:text-[7px]
-        lg:text-xs
-      "
-    >
-      More power.
-      <br />
-      Less worry.
-    </p>
-  </div>
-
-  {/* =================================================
-      BENEFITS
-
-      THIS IS THE PART THAT MUST BE BESIDE THE
-      POWERBANK ON MOBILE.
-  ================================================== */}
-
-  <div
-    className="
-      absolute
-      right-0
-      top-[185px]
-      z-30
-      w-[85px]
-      space-y-5
-
-      sm:top-[185px]
-      sm:w-[120px]
-      sm:space-y-6
-
-      lg:top-auto
-      lg:right-0
-      lg:bottom-4
-      lg:w-[220px]
-      lg:space-y-4
-    "
-  >
-    {productData.benefits.slice(0, 4).map((benefit) => {
-      const Icon = iconMap[benefit.icon];
-
-      return (
         <div
-          key={benefit.title}
           className="
-            flex
-            items-start
-            gap-1.5
-
-            sm:gap-2.5
-
-            lg:gap-3
+            pointer-events-none
+            absolute
+            right-[-20px]
+            top-[92px]
+            z-20
+            h-[535px]
+            w-[48%]
+            sm:right-[-15px]
+            sm:top-[105px]
+            sm:h-[600px]
+            lg:relative
+            lg:right-auto
+            lg:top-auto
+            lg:h-[650px]
+            lg:w-full
           "
         >
-          {/* Icon */}
+          {/* Product glow */}
 
           <div
             className="
-              flex
-              h-6
-              w-6
-              shrink-0
-              items-center
-              justify-center
+              absolute
+              left-1/2
+              top-[25%]
+              h-[260px]
+              w-[190px]
+              -translate-x-1/2
+              -translate-y-1/2
               rounded-full
-              border
-              border-purple-500/30
-              bg-purple-500/10
-              text-purple-300
+              bg-purple-600/35
+              blur-[85px]
+              sm:h-[350px]
+              sm:w-[270px]
+              sm:blur-[100px]
+              lg:top-1/2
+              lg:h-[430px]
+              lg:w-[330px]
+              lg:blur-[110px]
+            "
+          />
 
-              sm:h-8
-              sm:w-8
+          {/* =================================================
+              POWER BANK
 
-              lg:h-9
-              lg:w-9
+              Much larger + higher on mobile
+          ================================================== */}
+
+          <div
+            className="
+              absolute
+              left-1/2
+              top-[0px]
+              flex
+              -translate-x-1/2
+              items-start
+              justify-center
+              sm:top-[5px]
+              lg:inset-0
+              lg:items-center
             "
           >
-            <Icon
-              size={10}
+            <img
+              src="/images/products/powerbank-hero.png"
+              alt="WEKOME WP-66 20,000mAh Power Bank"
               className="
-                sm:h-3
-                sm:w-3
-                lg:h-4
-                lg:w-4
+                h-auto
+                w-[245px]
+                max-w-none
+                object-contain
+                drop-shadow-[0_30px_70px_rgba(0,0,0,0.75)]
+                sm:w-[320px]
+                lg:w-full
+                lg:max-w-[520px]
               "
             />
           </div>
 
-          {/* Text */}
+          {/* =================================================
+              CAPACITY
 
-          <div className="min-w-0">
-            <p
-              className="
-                text-[5px]
-                font-bold
-                leading-tight
-                text-white
+              Starts beside upper content
+          ================================================== */}
 
-                sm:text-[7px]
+          <div
+            className="
+              absolute
+              right-[-3px]
+              top-[215px]
+              z-30
+              w-[118px]
+              rounded-xl
+              border
+              border-purple-400/30
+              bg-black/75
+              p-3
+              backdrop-blur-xl
+              sm:right-0
+              sm:top-[235px]
+              sm:w-[155px]
+              sm:p-4
+              lg:top-[12%]
+              lg:w-[190px]
+              lg:p-5
+            "
+          >
+            <div className="flex items-end gap-1">
+              <span className="text-xl font-black sm:text-2xl lg:text-3xl">
+                {productData.capacity}
+              </span>
 
-                lg:text-[9px]
-              "
-            >
-              {benefit.title}
+              <span className="mb-1 text-[8px] font-bold text-purple-400 sm:text-xs lg:text-sm">
+                {productData.capacityUnit}
+              </span>
+            </div>
+
+            <p className="mt-1 text-[6px] uppercase tracking-[0.2em] text-gray-500 sm:text-[8px] lg:text-[9px]">
+              Real Capacity
             </p>
 
-            <p
-              className="
-                mt-0.5
-                text-[4px]
-                leading-[1.3]
-                text-gray-500
+            <div className="mt-2 h-px bg-white/10" />
 
-                sm:text-[6px]
-
-                lg:text-[8px]
-              "
-            >
-              {benefit.description}
+            <p className="mt-2 text-[8px] text-gray-300 sm:text-[10px] lg:text-xs">
+              More power.
+              <br />
+              Less worry.
             </p>
           </div>
+
+          {/* =================================================
+              BENEFITS
+
+              IMPORTANT:
+              They start around the same vertical level
+              as "Power That Goes With You."
+          ================================================== */}
+
+          <div
+            className="
+              absolute
+              right-[-5px]
+              top-[155px]
+              z-30
+              w-[135px]
+              space-y-4
+              sm:right-0
+              sm:top-[175px]
+              sm:w-[175px]
+              sm:space-y-5
+              lg:bottom-4
+              lg:top-auto
+              lg:w-[220px]
+              lg:space-y-4
+            "
+          >
+            {productData.benefits.slice(0, 4).map((benefit) => {
+              const Icon = iconMap[benefit.icon];
+
+              return (
+                <div
+                  key={benefit.title}
+                  className="flex items-center gap-2 sm:gap-3"
+                >
+                  <div
+                    className="
+                      flex
+                      h-7
+                      w-7
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-purple-500/30
+                      bg-purple-500/10
+                      text-purple-300
+                      sm:h-9
+                      sm:w-9
+                    "
+                  >
+                    <Icon
+                      size={13}
+                      className="sm:h-4 sm:w-4"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="truncate text-[7px] font-bold text-white sm:text-[9px]">
+                      {benefit.title}
+                    </p>
+
+                    <p className="mt-0.5 truncate text-[6px] text-gray-500 sm:text-[8px]">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      );
-    })}
-  </div>
-</div>
       </div>
     </section>
   );
 }
+
 export default Hero;

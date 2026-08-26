@@ -40,12 +40,12 @@ function Hero() {
       id="home"
       className="
         relative
-        min-h-[700px]
         overflow-hidden
         bg-[#05040b]
         pt-[76px]
         text-white
-        sm:min-h-[780px]
+        min-h-[720px]
+        sm:min-h-[800px]
         lg:min-h-screen
       "
     >
@@ -54,11 +54,11 @@ function Hero() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Main glow */}
+
         <div
           className="
             absolute
-            -right-[180px]
+            -right-[220px]
             top-[20px]
             h-[500px]
             w-[500px]
@@ -72,7 +72,6 @@ function Hero() {
           "
         />
 
-        {/* Lower glow */}
         <div
           className="
             absolute
@@ -88,7 +87,6 @@ function Hero() {
           "
         />
 
-        {/* Rings */}
         <div
           className="
             absolute
@@ -133,10 +131,8 @@ function Hero() {
           relative
           z-10
           mx-auto
-          min-h-[624px]
           max-w-[1440px]
           px-4
-          sm:min-h-[704px]
           sm:px-7
           lg:grid
           lg:min-h-[calc(100vh-76px)]
@@ -145,6 +141,7 @@ function Hero() {
           lg:px-12
         "
       >
+
         {/* =====================================================
             LEFT CONTENT
         ====================================================== */}
@@ -153,16 +150,17 @@ function Hero() {
           className="
             relative
             z-30
-            w-[59%]
-            pt-7
-            sm:w-[57%]
-            sm:pt-10
+            w-[62%]
+            pt-5
+            sm:w-[58%]
+            sm:pt-8
             lg:w-full
             lg:max-w-[650px]
             lg:pt-6
           "
         >
-          {/* Product badge */}
+
+          {/* PRODUCT BADGE */}
 
           <div className="mb-4 flex items-center gap-2 sm:mb-6 sm:gap-3">
             <span
@@ -189,14 +187,15 @@ function Hero() {
                 tracking-[0.12em]
                 text-gray-400
                 sm:text-xs
-                sm:tracking-[0.15em]
               "
             >
               {productData.series}
             </span>
           </div>
 
-          {/* Heading */}
+          {/* =================================================
+              HEADING
+          ================================================== */}
 
           <h1
             className="
@@ -205,7 +204,6 @@ function Hero() {
               font-black
               leading-[0.91]
               tracking-[-0.055em]
-              sm:max-w-[430px]
               sm:text-[54px]
               md:text-[64px]
               lg:max-w-[700px]
@@ -229,17 +227,16 @@ function Hero() {
             </span>
           </h1>
 
-          {/* Description */}
+          {/* DESCRIPTION */}
 
           <p
             className="
               mt-5
-              max-w-[310px]
+              max-w-[340px]
               text-[11px]
               leading-5
               text-gray-400
               sm:mt-7
-              sm:max-w-[500px]
               sm:text-base
               sm:leading-7
               lg:text-lg
@@ -272,7 +269,7 @@ function Hero() {
               return (
                 <div
                   key={feature.title}
-                  className="min-w-0 flex-1 sm:flex-none lg:flex-1"
+                  className="min-w-0 flex-1 lg:flex-1"
                 >
                   <div
                     className="
@@ -292,10 +289,7 @@ function Hero() {
                       lg:mb-3
                     "
                   >
-                    <Icon
-                      size={14}
-                      className="sm:h-[17px] sm:w-[17px]"
-                    />
+                    <Icon size={14} className="sm:h-[17px] sm:w-[17px]" />
                   </div>
 
                   <p
@@ -394,8 +388,6 @@ function Hero() {
               sm:gap-3
             "
           >
-            {/* WhatsApp */}
-
             <a
               href={`https://wa.me/${productData.whatsapp}`}
               target="_blank"
@@ -450,8 +442,6 @@ function Hero() {
               </span>
             </a>
 
-            {/* Shop */}
-
             <a
               href="#order"
               className="
@@ -487,27 +477,39 @@ function Hero() {
         </div>
 
         {/* =====================================================
-            RIGHT PRODUCT AREA
+            MOBILE PRODUCT COMPOSITION
 
-            MOBILE:
-            - starts high, near WP-66
-            - large power bank
-            - remains beside left content
-            - benefits start around the heading
+            The product begins beside the WP-66 line and stays
+            beside the main heading instead of dropping below it.
         ====================================================== */}
 
         <div
           className="
             pointer-events-none
             absolute
-            right-[-20px]
-            top-[92px]
             z-20
-            h-[535px]
+
+            /* MOBILE */
+            right-[-12px]
+            top-[88px]
+            h-[430px]
             w-[48%]
-            sm:right-[-15px]
+
+            /* SMALL PHONES */
+            max-[380px]:right-[-18px]
+            max-[380px]:w-[46%]
+
+            /* LARGER PHONES */
+            min-[400px]:right-[-8px]
+            min-[400px]:w-[49%]
+
+            /* TABLET */
+            sm:right-[-20px]
             sm:top-[105px]
-            sm:h-[600px]
+            sm:h-[520px]
+            sm:w-[46%]
+
+            /* DESKTOP */
             lg:relative
             lg:right-auto
             lg:top-auto
@@ -515,24 +517,23 @@ function Hero() {
             lg:w-full
           "
         >
+
           {/* Product glow */}
 
           <div
             className="
               absolute
               left-1/2
-              top-[25%]
+              top-[40%]
               h-[260px]
               w-[190px]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
               bg-purple-600/35
-              blur-[85px]
+              blur-[80px]
               sm:h-[350px]
               sm:w-[270px]
-              sm:blur-[100px]
-              lg:top-1/2
               lg:h-[430px]
               lg:w-[330px]
               lg:blur-[110px]
@@ -541,22 +542,15 @@ function Hero() {
 
           {/* =================================================
               POWER BANK
-
-              Much larger + higher on mobile
           ================================================== */}
 
           <div
             className="
               absolute
-              left-1/2
-              top-[0px]
+              inset-x-0
+              top-0
               flex
-              -translate-x-1/2
-              items-start
               justify-center
-              sm:top-[5px]
-              lg:inset-0
-              lg:items-center
             "
           >
             <img
@@ -564,11 +558,17 @@ function Hero() {
               alt="WEKOME WP-66 20,000mAh Power Bank"
               className="
                 h-auto
-                w-[245px]
+                w-[260px]
                 max-w-none
                 object-contain
-                drop-shadow-[0_30px_70px_rgba(0,0,0,0.75)]
-                sm:w-[320px]
+                drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
+
+                max-[380px]:w-[235px]
+
+                min-[400px]:w-[280px]
+
+                sm:w-[340px]
+
                 lg:w-full
                 lg:max-w-[520px]
               "
@@ -577,27 +577,29 @@ function Hero() {
 
           {/* =================================================
               CAPACITY
-
-              Starts beside upper content
           ================================================== */}
 
           <div
             className="
               absolute
-              right-[-3px]
-              top-[215px]
-              z-30
-              w-[118px]
+              right-[-8px]
+              top-[155px]
+              w-[110px]
               rounded-xl
               border
               border-purple-400/30
-              bg-black/75
+              bg-black/70
               p-3
               backdrop-blur-xl
-              sm:right-0
-              sm:top-[235px]
-              sm:w-[155px]
+
+              max-[380px]:right-[-12px]
+              max-[380px]:w-[100px]
+
+              sm:top-[180px]
+              sm:w-[145px]
               sm:p-4
+
+              lg:right-0
               lg:top-[12%]
               lg:w-[190px]
               lg:p-5
@@ -630,26 +632,32 @@ function Hero() {
               BENEFITS
 
               IMPORTANT:
-              They start around the same vertical level
-              as "Power That Goes With You."
+              They begin around the same vertical level as
+              "Power That Goes With You."
           ================================================== */}
 
           <div
             className="
               absolute
               right-[-5px]
-              top-[155px]
-              z-30
-              w-[135px]
-              space-y-4
-              sm:right-0
-              sm:top-[175px]
+              top-[285px]
+              w-[125px]
+              space-y-3
+
+              max-[380px]:top-[275px]
+              max-[380px]:w-[115px]
+
+              min-[400px]:top-[300px]
+              min-[400px]:w-[135px]
+
+              sm:top-[335px]
               sm:w-[175px]
-              sm:space-y-5
+              sm:space-y-4
+
               lg:bottom-4
+              lg:right-0
               lg:top-auto
               lg:w-[220px]
-              lg:space-y-4
             "
           >
             {productData.benefits.slice(0, 4).map((benefit) => {
@@ -673,6 +681,7 @@ function Hero() {
                       border-purple-500/30
                       bg-purple-500/10
                       text-purple-300
+
                       sm:h-9
                       sm:w-9
                     "

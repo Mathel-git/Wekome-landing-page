@@ -44,8 +44,8 @@ function Hero() {
         bg-[#05040b]
         pt-[76px]
         text-white
-        min-h-[720px]
-        sm:min-h-[800px]
+        min-h-[760px]
+        sm:min-h-[820px]
         lg:min-h-screen
       "
     >
@@ -54,39 +54,40 @@ function Hero() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-
+        {/* Main glow */}
         <div
           className="
             absolute
             -right-[220px]
             top-[20px]
-            h-[500px]
-            w-[500px]
+            h-[520px]
+            w-[520px]
             rounded-full
             bg-purple-700/20
             blur-[120px]
+            sm:-right-[180px]
             sm:h-[650px]
             sm:w-[650px]
-            lg:-right-40
-            lg:top-20
           "
         />
 
+        {/* Lower glow */}
         <div
           className="
             absolute
-            right-[5%]
-            bottom-[20px]
-            h-[300px]
-            w-[300px]
+            right-[0]
+            bottom-[0]
+            h-[350px]
+            w-[350px]
             rounded-full
-            bg-purple-600/15
-            blur-[100px]
+            bg-purple-600/10
+            blur-[110px]
             sm:h-[450px]
             sm:w-[450px]
           "
         />
 
+        {/* Decorative rings */}
         <div
           className="
             absolute
@@ -123,7 +124,7 @@ function Hero() {
       </div>
 
       {/* =====================================================
-          MAIN HERO
+          HERO CONTAINER
       ====================================================== */}
 
       <div
@@ -134,576 +135,704 @@ function Hero() {
           max-w-[1440px]
           px-4
           sm:px-7
-          lg:grid
           lg:min-h-[calc(100vh-76px)]
-          lg:grid-cols-[1fr_1fr]
-          lg:items-center
           lg:px-12
         "
       >
-
-        {/* =====================================================
-            LEFT CONTENT
-        ====================================================== */}
+        {/* ===================================================
+            MOBILE / TABLET COMPOSITION
+            ---------------------------------------------------
+            Text remains LEFT.
+            Product remains RIGHT.
+            Product starts near WP-66.
+        ==================================================== */}
 
         <div
           className="
             relative
-            z-30
-            w-[62%]
-            pt-5
-            sm:w-[58%]
-            sm:pt-8
-            lg:w-full
-            lg:max-w-[650px]
-            lg:pt-6
+            min-h-[684px]
+            lg:hidden
           "
         >
-
-          {/* PRODUCT BADGE */}
-
-          <div className="mb-4 flex items-center gap-2 sm:mb-6 sm:gap-3">
-            <span
-              className="
-                rounded-md
-                bg-purple-600
-                px-2.5
-                py-1.5
-                text-[8px]
-                font-bold
-                tracking-wider
-                sm:px-3
-                sm:text-[10px]
-              "
-            >
-              {productData.model}
-            </span>
-
-            <span
-              className="
-                whitespace-nowrap
-                text-[8px]
-                font-medium
-                tracking-[0.12em]
-                text-gray-400
-                sm:text-xs
-              "
-            >
-              {productData.series}
-            </span>
-          </div>
-
-          {/* =================================================
-              HEADING
-          ================================================== */}
-
-          <h1
-            className="
-              max-w-[330px]
-              text-[38px]
-              font-black
-              leading-[0.91]
-              tracking-[-0.055em]
-              sm:text-[54px]
-              md:text-[64px]
-              lg:max-w-[700px]
-              lg:text-[84px]
-            "
-          >
-            Power That
-            <br />
-
-            <span
-              className="
-                bg-gradient-to-r
-                from-purple-400
-                via-fuchsia-500
-                to-purple-500
-                bg-clip-text
-                text-transparent
-              "
-            >
-              Goes With You.
-            </span>
-          </h1>
-
-          {/* DESCRIPTION */}
-
-          <p
-            className="
-              mt-5
-              max-w-[340px]
-              text-[11px]
-              leading-5
-              text-gray-400
-              sm:mt-7
-              sm:text-base
-              sm:leading-7
-              lg:text-lg
-            "
-          >
-            {productData.description}
-          </p>
-
-          {/* =================================================
-              FEATURES
-          ================================================== */}
+          {/* ================================================
+              LEFT CONTENT
+          ================================================= */}
 
           <div
             className="
-              mt-7
-              flex
-              w-[calc(100vw-32px)]
-              max-w-[650px]
-              justify-between
-              gap-1
-              sm:mt-9
-              sm:gap-3
-              lg:grid
-              lg:grid-cols-5
+              relative
+              z-30
+              w-[58%]
+              pt-8
+              sm:w-[56%]
+              sm:pt-10
             "
           >
-            {productData.features.slice(0, 5).map((feature) => {
-              const Icon = iconMap[feature.icon];
+            {/* Product badge */}
 
-              return (
-                <div
-                  key={feature.title}
-                  className="min-w-0 flex-1 lg:flex-1"
-                >
-                  <div
-                    className="
-                      mb-2
-                      flex
-                      h-8
-                      w-8
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-purple-500/30
-                      bg-purple-500/10
-                      text-purple-300
-                      sm:h-10
-                      sm:w-10
-                      lg:mb-3
-                    "
-                  >
-                    <Icon size={14} className="sm:h-[17px] sm:w-[17px]" />
-                  </div>
-
-                  <p
-                    className="
-                      truncate
-                      text-[7px]
-                      font-bold
-                      tracking-wide
-                      text-white
-                      sm:text-[9px]
-                    "
-                  >
-                    {feature.title}
-                  </p>
-
-                  <p
-                    className="
-                      mt-1
-                      truncate
-                      text-[6px]
-                      leading-3
-                      text-gray-500
-                      sm:text-[9px]
-                      sm:leading-4
-                    "
-                  >
-                    {feature.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* =================================================
-              PRICE
-          ================================================== */}
-
-          <div
-            className="
-              mt-7
-              grid
-              w-[calc(100vw-32px)]
-              max-w-[665px]
-              grid-cols-3
-              overflow-hidden
-              rounded-xl
-              border
-              border-white/10
-              bg-white/[0.03]
-              sm:mt-9
-            "
-          >
-            <div className="px-3 py-3 sm:px-5 sm:py-4">
-              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
-                Original Price
-              </p>
-
-              <p className="mt-1 text-[13px] font-bold text-gray-400 line-through sm:text-lg">
-                {productData.originalPrice}
-              </p>
-            </div>
-
-            <div className="bg-purple-600/20 px-3 py-3 sm:px-5 sm:py-4">
-              <p className="text-[6px] uppercase tracking-wider text-purple-300 sm:text-[9px]">
-                Promo Price
-              </p>
-
-              <p className="mt-1 text-[17px] font-black text-yellow-300 sm:text-2xl">
-                {productData.promoPrice}
-              </p>
-            </div>
-
-            <div className="px-3 py-3 sm:px-5 sm:py-4">
-              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
-                You Save
-              </p>
-
-              <p className="mt-1 text-[13px] font-bold text-white sm:text-lg">
-                {productData.savings}
-              </p>
-            </div>
-          </div>
-
-          {/* =================================================
-              BUTTONS
-          ================================================== */}
-
-          <div
-            className="
-              mt-5
-              flex
-              w-[calc(100vw-32px)]
-              max-w-[665px]
-              gap-2
-              sm:mt-7
-              sm:gap-3
-            "
-          >
-            <a
-              href={`https://wa.me/${productData.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                flex
-                min-w-0
-                flex-1
-                items-center
-                justify-center
-                gap-2
-                rounded-lg
-                bg-gradient-to-r
-                from-purple-600
-                to-fuchsia-500
-                px-2
-                py-3
-                shadow-[0_0_30px_rgba(168,85,247,0.25)]
-                transition
-                duration-300
-                hover:-translate-y-1
-                sm:gap-3
-                sm:px-5
-                sm:py-4
-              "
-            >
+            <div className="mb-5 flex items-center gap-2 sm:mb-6 sm:gap-3">
               <span
                 className="
+                  rounded-md
+                  bg-purple-600
+                  px-2.5
+                  py-1.5
+                  text-[8px]
+                  font-bold
+                  tracking-wider
+                  sm:px-3
+                  sm:text-[10px]
+                "
+              >
+                {productData.model}
+              </span>
+
+              <span
+                className="
+                  whitespace-nowrap
+                  text-[8px]
+                  font-medium
+                  tracking-[0.12em]
+                  text-gray-400
+                  sm:text-xs
+                "
+              >
+                {productData.series}
+              </span>
+            </div>
+
+            {/* Heading */}
+
+            <h1
+              className="
+                max-w-[350px]
+                text-[38px]
+                font-black
+                leading-[0.91]
+                tracking-[-0.055em]
+                sm:text-[52px]
+                md:text-[62px]
+              "
+            >
+              Power That
+              <br />
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-purple-400
+                  via-fuchsia-500
+                  to-purple-500
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Goes With You.
+              </span>
+            </h1>
+
+            {/* Description */}
+
+            <p
+              className="
+                mt-5
+                max-w-[330px]
+                text-[11px]
+                leading-5
+                text-gray-400
+                sm:mt-7
+                sm:text-base
+                sm:leading-7
+              "
+            >
+              {productData.description}
+            </p>
+
+            {/* Features */}
+
+            <div
+              className="
+                mt-7
+                grid
+                grid-cols-2
+                gap-x-3
+                gap-y-5
+                sm:mt-9
+                sm:grid-cols-3
+                sm:gap-5
+              "
+            >
+              {productData.features.slice(0, 5).map((feature) => {
+                const Icon = iconMap[feature.icon];
+
+                return (
+                  <div
+                    key={feature.title}
+                    className="min-w-0"
+                  >
+                    <div
+                      className="
+                        mb-2
+                        flex
+                        h-8
+                        w-8
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-purple-500/30
+                        bg-purple-500/10
+                        text-purple-300
+                        sm:h-10
+                        sm:w-10
+                      "
+                    >
+                      <Icon size={14} />
+                    </div>
+
+                    <p
+                      className="
+                        text-[7px]
+                        font-bold
+                        tracking-wide
+                        text-white
+                        sm:text-[9px]
+                      "
+                    >
+                      {feature.title}
+                    </p>
+
+                    <p
+                      className="
+                        mt-1
+                        text-[6px]
+                        leading-3
+                        text-gray-500
+                        sm:text-[8px]
+                        sm:leading-4
+                      "
+                    >
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Price */}
+
+            <div
+              className="
+                mt-7
+                grid
+                w-[calc(100vw-32px)]
+                max-w-[660px]
+                grid-cols-3
+                overflow-hidden
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+              "
+            >
+              <div className="px-3 py-3">
+                <p className="text-[6px] uppercase tracking-wider text-gray-500">
+                  Original Price
+                </p>
+
+                <p className="mt-1 text-[13px] font-bold text-gray-400 line-through">
+                  {productData.originalPrice}
+                </p>
+              </div>
+
+              <div className="bg-purple-600/20 px-3 py-3">
+                <p className="text-[6px] uppercase tracking-wider text-purple-300">
+                  Promo Price
+                </p>
+
+                <p className="mt-1 text-[17px] font-black text-yellow-300">
+                  {productData.promoPrice}
+                </p>
+              </div>
+
+              <div className="px-3 py-3">
+                <p className="text-[6px] uppercase tracking-wider text-gray-500">
+                  You Save
+                </p>
+
+                <p className="mt-1 text-[13px] font-bold text-white">
+                  {productData.savings}
+                </p>
+              </div>
+            </div>
+
+            {/* Buttons */}
+
+            <div
+              className="
+                mt-5
+                flex
+                w-[calc(100vw-32px)]
+                max-w-[660px]
+                gap-2
+              "
+            >
+              {/* WhatsApp */}
+
+              <a
+                href={`https://wa.me/${productData.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
                   flex
-                  h-7
-                  w-7
+                  min-w-0
+                  flex-1
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-lg
+                  bg-gradient-to-r
+                  from-purple-600
+                  to-fuchsia-500
+                  px-2
+                  py-3
+                  shadow-[0_0_30px_rgba(168,85,247,0.25)]
+                "
+              >
+                <span
+                  className="
+                    flex
+                    h-7
+                    w-7
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-white/10
+                  "
+                >
+                  <WhatsAppIcon size={17} />
+                </span>
+
+                <span className="min-w-0 text-left">
+                  <span className="block text-[6px] font-medium uppercase tracking-wider opacity-70">
+                    Order Now on WhatsApp
+                  </span>
+
+                  <span className="block truncate text-[10px] font-bold">
+                    08162409010
+                  </span>
+                </span>
+              </a>
+
+              {/* Shop */}
+
+              <a
+                href="#order"
+                className="
+                  flex
+                  w-[115px]
                   shrink-0
                   items-center
                   justify-center
-                  rounded-full
-                  bg-white/10
-                  sm:h-8
-                  sm:w-8
+                  gap-2
+                  rounded-lg
+                  border
+                  border-purple-500/30
+                  bg-white/[0.03]
+                  px-3
+                  py-3
+                  text-[9px]
+                  font-bold
                 "
               >
-                <WhatsAppIcon size={17} />
-              </span>
+                <ShoppingBag size={15} />
+                SHOP NOW
+              </a>
+            </div>
+          </div>
 
-              <span className="min-w-0 text-left">
-                <span className="block text-[6px] font-medium uppercase tracking-wider opacity-70 sm:text-[8px]">
-                  Order Now on WhatsApp
-                </span>
+          {/* ================================================
+              MOBILE PRODUCT
+              Starts near WP-66 line.
+          ================================================= */}
 
-                <span className="block truncate text-[10px] font-bold sm:text-sm">
-                  08162409010
-                </span>
-              </span>
-            </a>
+          <div
+            className="
+              pointer-events-none
+              absolute
+              right-[-12px]
+              top-[72px]
+              z-20
+              h-[430px]
+              w-[47%]
+              sm:right-[-5px]
+              sm:top-[76px]
+              sm:h-[500px]
+              sm:w-[45%]
+            "
+          >
+            {/* Product glow */}
 
-            <a
-              href="#order"
+            <div
               className="
+                absolute
+                left-1/2
+                top-[38%]
+                h-[260px]
+                w-[180px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-purple-600/30
+                blur-[80px]
+                sm:h-[340px]
+                sm:w-[240px]
+                sm:blur-[100px]
+              "
+            />
+
+            {/* Power bank */}
+
+            <div
+              className="
+                absolute
+                left-1/2
+                top-[5px]
                 flex
-                w-[115px]
-                shrink-0
-                items-center
+                -translate-x-1/2
+                items-start
                 justify-center
-                gap-2
-                rounded-lg
-                border
-                border-purple-500/30
-                bg-white/[0.03]
-                px-3
-                py-3
-                text-[9px]
-                font-bold
-                transition
-                duration-300
-                hover:-translate-y-1
-                hover:border-purple-400/60
-                hover:bg-purple-500/10
-                sm:w-[165px]
-                sm:px-5
-                sm:py-4
-                sm:text-sm
               "
             >
-              <ShoppingBag size={15} />
-              <span>SHOP NOW</span>
-            </a>
+              <img
+                src="/images/products/powerbank-hero.png"
+                alt="WEKOME WP-66 20,000mAh Power Bank"
+                className="
+                  h-auto
+                  w-[250px]
+                  max-w-none
+                  object-contain
+                  drop-shadow-[0_30px_70px_rgba(0,0,0,0.75)]
+                  sm:w-[340px]
+                "
+              />
+            </div>
+
+            {/* Capacity */}
+
+            <div
+              className="
+                absolute
+                right-[-3px]
+                top-[120px]
+                w-[112px]
+                rounded-xl
+                border
+                border-purple-400/30
+                bg-black/70
+                p-3
+                backdrop-blur-xl
+                sm:top-[145px]
+                sm:w-[150px]
+                sm:p-4
+              "
+            >
+              <div className="flex items-end gap-1">
+                <span className="text-xl font-black sm:text-2xl">
+                  {productData.capacity}
+                </span>
+
+                <span className="mb-1 text-[8px] font-bold text-purple-400 sm:text-xs">
+                  {productData.capacityUnit}
+                </span>
+              </div>
+
+              <p className="mt-1 text-[6px] uppercase tracking-[0.2em] text-gray-500 sm:text-[8px]">
+                Real Capacity
+              </p>
+
+              <div className="mt-2 h-px bg-white/10" />
+
+              <p className="mt-2 text-[8px] text-gray-300 sm:text-[10px]">
+                More power.
+                <br />
+                Less worry.
+              </p>
+            </div>
+
+            {/* Benefits */}
+
+            <div
+              className="
+                absolute
+                right-[-4px]
+                top-[280px]
+                w-[145px]
+                space-y-3
+                sm:top-[335px]
+                sm:w-[175px]
+                sm:space-y-4
+              "
+            >
+              {productData.benefits.slice(0, 4).map((benefit) => {
+                const Icon = iconMap[benefit.icon];
+
+                return (
+                  <div
+                    key={benefit.title}
+                    className="flex items-center gap-2"
+                  >
+                    <div
+                      className="
+                        flex
+                        h-7
+                        w-7
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-purple-500/30
+                        bg-purple-500/10
+                        text-purple-300
+                        sm:h-9
+                        sm:w-9
+                      "
+                    >
+                      <Icon size={13} />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="truncate text-[7px] font-bold text-white sm:text-[9px]">
+                        {benefit.title}
+                      </p>
+
+                      <p className="mt-0.5 truncate text-[6px] text-gray-500 sm:text-[8px]">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* =====================================================
-            MOBILE PRODUCT COMPOSITION
-
-            The product begins beside the WP-66 line and stays
-            beside the main heading instead of dropping below it.
-        ====================================================== */}
+        {/* ===================================================
+            DESKTOP
+        ==================================================== */}
 
         <div
           className="
-            pointer-events-none
-            absolute
-            z-20
-
-            /* MOBILE */
-            right-[-12px]
-            top-[88px]
-            h-[430px]
-            w-[48%]
-
-            /* SMALL PHONES */
-            max-[380px]:right-[-18px]
-            max-[380px]:w-[46%]
-
-            /* LARGER PHONES */
-            min-[400px]:right-[-8px]
-            min-[400px]:w-[49%]
-
-            /* TABLET */
-            sm:right-[-20px]
-            sm:top-[105px]
-            sm:h-[520px]
-            sm:w-[46%]
-
-            /* DESKTOP */
-            lg:relative
-            lg:right-auto
-            lg:top-auto
-            lg:h-[650px]
-            lg:w-full
+            hidden
+            min-h-[calc(100vh-76px)]
+            items-center
+            lg:grid
+            lg:grid-cols-[1fr_1fr]
+            lg:gap-0
           "
         >
+          {/* LEFT */}
 
-          {/* Product glow */}
+          <div className="relative z-20 max-w-[650px] pt-6">
+            {/* Badge */}
 
-          <div
-            className="
-              absolute
-              left-1/2
-              top-[40%]
-              h-[260px]
-              w-[190px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-purple-600/35
-              blur-[80px]
-              sm:h-[350px]
-              sm:w-[270px]
-              lg:h-[430px]
-              lg:w-[330px]
-              lg:blur-[110px]
-            "
-          />
+            <div className="mb-6 flex items-center gap-3">
+              <span className="rounded-md bg-purple-600 px-3 py-1.5 text-[10px] font-bold tracking-wider">
+                {productData.model}
+              </span>
 
-          {/* =================================================
-              POWER BANK
-          ================================================== */}
+              <span className="text-xs font-medium tracking-[0.15em] text-gray-400">
+                {productData.series}
+              </span>
+            </div>
 
-          <div
-            className="
-              absolute
-              inset-x-0
-              top-0
-              flex
-              justify-center
-            "
-          >
+            {/* Heading */}
+
+            <h1 className="max-w-[700px] text-[84px] font-black leading-[0.94] tracking-[-0.05em]">
+              Power That
+              <br />
+
+              <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent">
+                Goes With You.
+              </span>
+            </h1>
+
+            {/* Description */}
+
+            <p className="mt-7 max-w-[500px] text-lg leading-7 text-gray-400">
+              {productData.description}
+            </p>
+
+            {/* Features */}
+
+            <div className="mt-9 grid max-w-[650px] grid-cols-5 gap-5">
+              {productData.features.slice(0, 5).map((feature) => {
+                const Icon = iconMap[feature.icon];
+
+                return (
+                  <div key={feature.title}>
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300">
+                      <Icon size={17} />
+                    </div>
+
+                    <p className="text-[9px] font-bold text-white">
+                      {feature.title}
+                    </p>
+
+                    <p className="mt-1 text-[9px] leading-4 text-gray-500">
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Price */}
+
+            <div className="mt-9 grid max-w-[665px] grid-cols-3 overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+              <div className="px-5 py-4">
+                <p className="text-[9px] uppercase tracking-wider text-gray-500">
+                  Original Price
+                </p>
+
+                <p className="mt-1 text-lg font-bold text-gray-400 line-through">
+                  {productData.originalPrice}
+                </p>
+              </div>
+
+              <div className="bg-purple-600/20 px-5 py-4">
+                <p className="text-[9px] uppercase tracking-wider text-purple-300">
+                  Promo Price
+                </p>
+
+                <p className="mt-1 text-2xl font-black text-yellow-300">
+                  {productData.promoPrice}
+                </p>
+              </div>
+
+              <div className="px-5 py-4">
+                <p className="text-[9px] uppercase tracking-wider text-gray-500">
+                  You Save
+                </p>
+
+                <p className="mt-1 text-lg font-bold text-white">
+                  {productData.savings}
+                </p>
+              </div>
+            </div>
+
+            {/* Buttons */}
+
+            <div className="mt-7 flex gap-3">
+              <a
+                href={`https://wa.me/${productData.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-500 px-7 py-4 text-sm font-bold shadow-[0_0_30px_rgba(168,85,247,0.25)]"
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                  <WhatsAppIcon size={18} />
+                </span>
+
+                <span className="text-left">
+                  <span className="block text-[8px] font-medium uppercase tracking-wider opacity-70">
+                    Order Now on WhatsApp
+                  </span>
+
+                  <span className="text-sm">
+                    08162409010
+                  </span>
+                </span>
+              </a>
+
+              <a
+                href="#order"
+                className="flex items-center justify-center gap-3 rounded-lg border border-purple-500/30 bg-white/[0.03] px-8 py-4 text-sm font-bold"
+              >
+                <ShoppingBag size={17} />
+                SHOP NOW
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT PRODUCT */}
+
+          <div className="relative flex h-[650px] items-center justify-center">
+            {/* Glow */}
+
+            <div className="absolute h-[430px] w-[330px] rounded-full bg-purple-600/30 blur-[110px]" />
+
+            {/* Product */}
+
             <img
               src="/images/products/powerbank-hero.png"
               alt="WEKOME WP-66 20,000mAh Power Bank"
               className="
-                h-auto
-                w-[260px]
-                max-w-none
+                relative
+                z-10
+                w-full
+                max-w-[520px]
                 object-contain
                 drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
-
-                max-[380px]:w-[235px]
-
-                min-[400px]:w-[280px]
-
-                sm:w-[340px]
-
-                lg:w-full
-                lg:max-w-[520px]
               "
             />
-          </div>
 
-          {/* =================================================
-              CAPACITY
-          ================================================== */}
+            {/* Capacity */}
 
-          <div
-            className="
-              absolute
-              right-[-8px]
-              top-[155px]
-              w-[110px]
-              rounded-xl
-              border
-              border-purple-400/30
-              bg-black/70
-              p-3
-              backdrop-blur-xl
+            <div className="absolute right-0 top-[12%] z-20 w-[190px] rounded-2xl border border-purple-400/30 bg-black/70 p-5 backdrop-blur-xl">
+              <div className="flex items-end gap-1">
+                <span className="text-3xl font-black">
+                  {productData.capacity}
+                </span>
 
-              max-[380px]:right-[-12px]
-              max-[380px]:w-[100px]
+                <span className="mb-1 text-sm font-bold text-purple-400">
+                  {productData.capacityUnit}
+                </span>
+              </div>
 
-              sm:top-[180px]
-              sm:w-[145px]
-              sm:p-4
+              <p className="mt-2 text-[9px] uppercase tracking-[0.2em] text-gray-500">
+                Real Capacity
+              </p>
 
-              lg:right-0
-              lg:top-[12%]
-              lg:w-[190px]
-              lg:p-5
-            "
-          >
-            <div className="flex items-end gap-1">
-              <span className="text-xl font-black sm:text-2xl lg:text-3xl">
-                {productData.capacity}
-              </span>
+              <div className="mt-3 h-px bg-white/10" />
 
-              <span className="mb-1 text-[8px] font-bold text-purple-400 sm:text-xs lg:text-sm">
-                {productData.capacityUnit}
-              </span>
+              <p className="mt-3 text-xs text-gray-300">
+                More power.
+                <br />
+                Less worry.
+              </p>
             </div>
 
-            <p className="mt-1 text-[6px] uppercase tracking-[0.2em] text-gray-500 sm:text-[8px] lg:text-[9px]">
-              Real Capacity
-            </p>
+            {/* Benefits */}
 
-            <div className="mt-2 h-px bg-white/10" />
+            <div className="absolute bottom-4 right-0 z-20 w-[220px] space-y-4">
+              {productData.benefits.slice(0, 4).map((benefit) => {
+                const Icon = iconMap[benefit.icon];
 
-            <p className="mt-2 text-[8px] text-gray-300 sm:text-[10px] lg:text-xs">
-              More power.
-              <br />
-              Less worry.
-            </p>
-          </div>
-
-          {/* =================================================
-              BENEFITS
-
-              IMPORTANT:
-              They begin around the same vertical level as
-              "Power That Goes With You."
-          ================================================== */}
-
-          <div
-            className="
-              absolute
-              right-[-5px]
-              top-[285px]
-              w-[125px]
-              space-y-3
-
-              max-[380px]:top-[275px]
-              max-[380px]:w-[115px]
-
-              min-[400px]:top-[300px]
-              min-[400px]:w-[135px]
-
-              sm:top-[335px]
-              sm:w-[175px]
-              sm:space-y-4
-
-              lg:bottom-4
-              lg:right-0
-              lg:top-auto
-              lg:w-[220px]
-            "
-          >
-            {productData.benefits.slice(0, 4).map((benefit) => {
-              const Icon = iconMap[benefit.icon];
-
-              return (
-                <div
-                  key={benefit.title}
-                  className="flex items-center gap-2 sm:gap-3"
-                >
+                return (
                   <div
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-purple-500/30
-                      bg-purple-500/10
-                      text-purple-300
-
-                      sm:h-9
-                      sm:w-9
-                    "
+                    key={benefit.title}
+                    className="flex items-center gap-3"
                   >
-                    <Icon
-                      size={13}
-                      className="sm:h-4 sm:w-4"
-                    />
-                  </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300">
+                      <Icon size={16} />
+                    </div>
 
-                  <div className="min-w-0">
-                    <p className="truncate text-[7px] font-bold text-white sm:text-[9px]">
-                      {benefit.title}
-                    </p>
+                    <div>
+                      <p className="text-[9px] font-bold text-white">
+                        {benefit.title}
+                      </p>
 
-                    <p className="mt-0.5 truncate text-[6px] text-gray-500 sm:text-[8px]">
-                      {benefit.description}
-                    </p>
+                      <p className="mt-1 text-[8px] text-gray-500">
+                        {benefit.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

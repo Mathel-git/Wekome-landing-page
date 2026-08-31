@@ -19,6 +19,10 @@ const iconMap = {
   plane: Plane,
 };
 
+/* ============================================================
+   WHATSAPP LOGO
+============================================================ */
+
 function WhatsAppIcon({ size = 22 }) {
   return (
     <svg
@@ -29,7 +33,7 @@ function WhatsAppIcon({ size = 22 }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path d="M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.86 11.86 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.4-8.42ZM12.06 21.77h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.87 9.87 0 1 1 8.39 4.65Zm5.41-7.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.14-.61.14-.14.3-.35.45-.52.15-.18.2-.3.2-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.27-.2-.57-.35Z" />
+      <path d="M20.52 3.48A11.82 11.82 0 0 0 12.05 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.86 11.86 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.4-8.42ZM12.06 21.77h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.87 9.87 0 1 1 8.39 4.65Zm5.41-7.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.14-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.27-.2-.57-.35Z" />
     </svg>
   );
 }
@@ -45,15 +49,18 @@ function Hero() {
         bg-[#05040b]
         pt-[76px]
         text-white
-        sm:min-h-[820px]
+
+        sm:min-h-[850px]
+
         lg:min-h-screen
       "
     >
-      {/* =========================================================
+      {/* ==========================================================
           BACKGROUND
-      ========================================================== */}
+      =========================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Main purple glow */}
         <div
           className="
             absolute
@@ -64,29 +71,33 @@ function Hero() {
             rounded-full
             bg-purple-700/20
             blur-[120px]
+
             sm:h-[700px]
             sm:w-[700px]
+
             lg:-right-[180px]
-            lg:top-[20px]
+            lg:top-[60px]
           "
         />
 
+        {/* Lower glow */}
         <div
           className="
             absolute
-            right-[5%]
-            bottom-[0]
-            h-[350px]
-            w-[350px]
+            -right-[100px]
+            bottom-[20px]
+            h-[400px]
+            w-[400px]
             rounded-full
             bg-purple-600/15
-            blur-[100px]
-            sm:h-[450px]
-            sm:w-[450px]
+            blur-[120px]
+
+            lg:h-[500px]
+            lg:w-[500px]
           "
         />
 
-        {/* Large decorative rings */}
+        {/* Ring 1 */}
         <div
           className="
             absolute
@@ -97,54 +108,68 @@ function Hero() {
             rounded-full
             border
             border-purple-500/20
+
             sm:-right-[280px]
-            sm:-top-[250px]
+            sm:-top-[240px]
             sm:h-[800px]
             sm:w-[800px]
+
+            lg:-right-[250px]
+            lg:-top-[260px]
+            lg:h-[900px]
+            lg:w-[900px]
           "
         />
 
+        {/* Ring 2 */}
         <div
           className="
             absolute
-            -right-[300px]
+            -right-[310px]
             -top-[270px]
             h-[650px]
             w-[650px]
             rounded-full
             border
             border-purple-400/20
-            sm:-right-[250px]
+
+            sm:-right-[260px]
             sm:-top-[220px]
-            sm:h-[750px]
-            sm:w-[750px]
+            sm:h-[760px]
+            sm:w-[760px]
+
+            lg:-right-[230px]
+            lg:-top-[240px]
+            lg:h-[850px]
+            lg:w-[850px]
           "
         />
       </div>
 
-      {/* =========================================================
-          DESKTOP + MOBILE HERO CONTAINER
-      ========================================================== */}
+      {/* ==========================================================
+          MAIN HERO CONTAINER
+      =========================================================== */}
 
       <div
         className="
           relative
           z-10
           mx-auto
-          min-h-[684px]
           max-w-[1440px]
           px-4
-          sm:px-7
+
+          sm:px-6
+
           lg:grid
           lg:min-h-[calc(100vh-76px)]
-          lg:grid-cols-2
+          lg:grid-cols-[1fr_1fr]
           lg:items-center
           lg:px-12
         "
       >
-        {/* =======================================================
-            LEFT CONTENT
-        ======================================================== */}
+        {/* ========================================================
+            MOBILE/DESKTOP LEFT CONTENT
+        ========================================================= */}
 
         <div
           className="
@@ -152,11 +177,11 @@ function Hero() {
             z-30
 
             /* MOBILE */
-            w-[54%]
+            w-[62%]
             pt-8
 
             /* TABLET */
-            sm:w-[55%]
+            sm:w-[60%]
             sm:pt-12
 
             /* DESKTOP */
@@ -165,9 +190,9 @@ function Hero() {
             lg:pt-6
           "
         >
-          {/* =====================================================
-              BADGE
-          ====================================================== */}
+          {/* ======================================================
+              PRODUCT BADGE
+          ======================================================= */}
 
           <div
             className="
@@ -175,8 +200,10 @@ function Hero() {
               flex
               items-center
               gap-2
+
               sm:mb-6
               sm:gap-3
+
               lg:mb-6
             "
           >
@@ -189,10 +216,9 @@ function Hero() {
                 text-[8px]
                 font-bold
                 tracking-wider
+
                 sm:px-3
                 sm:text-[10px]
-                lg:px-4
-                lg:py-2
               "
             >
               {productData.model}
@@ -205,6 +231,7 @@ function Hero() {
                 font-medium
                 tracking-[0.12em]
                 text-gray-400
+
                 sm:text-xs
                 sm:tracking-[0.15em]
               "
@@ -213,22 +240,22 @@ function Hero() {
             </span>
           </div>
 
-          {/* =====================================================
-              MAIN HEADING
-          ====================================================== */}
+          {/* ======================================================
+              HEADING
+          ======================================================= */}
 
           <h1
             className="
-              max-w-[240px]
+              max-w-[340px]
               text-[38px]
               font-black
               leading-[0.91]
               tracking-[-0.055em]
 
-              sm:max-w-[350px]
-              sm:text-[52px]
+              sm:max-w-[430px]
+              sm:text-[54px]
 
-              md:text-[62px]
+              md:text-[64px]
 
               lg:max-w-[700px]
               lg:text-[84px]
@@ -251,15 +278,15 @@ function Hero() {
             </span>
           </h1>
 
-          {/* =====================================================
+          {/* ======================================================
               DESCRIPTION
-          ====================================================== */}
+          ======================================================= */}
 
           <p
             className="
               mt-5
-              max-w-[300px]
-              text-[10px]
+              max-w-[330px]
+              text-[11px]
               leading-5
               text-gray-400
 
@@ -274,11 +301,13 @@ function Hero() {
             {productData.description}
           </p>
 
-          {/* =====================================================
-              FIVE FEATURES
-              IMPORTANT:
-              They stay on the LEFT.
-          ====================================================== */}
+          {/* ======================================================
+              FEATURES
+
+              MOBILE:
+              They remain on the left/lower portion.
+              They DO NOT push the product into a new row.
+          ======================================================= */}
 
           <div
             className="
@@ -286,13 +315,17 @@ function Hero() {
               grid
               w-[calc(100vw-32px)]
               max-w-[650px]
-              grid-cols-5
-              gap-1
+              grid-cols-2
+              gap-x-5
+              gap-y-6
 
               sm:mt-9
+              sm:grid-cols-5
               sm:gap-3
 
-              lg:mt-10
+              lg:mt-9
+              lg:grid
+              lg:grid-cols-5
             "
           >
             {productData.features.slice(0, 5).map((feature) => {
@@ -303,6 +336,8 @@ function Hero() {
                   key={feature.title}
                   className="
                     min-w-0
+                    flex
+                    flex-col
                   "
                 >
                   <div
@@ -334,7 +369,7 @@ function Hero() {
                   <p
                     className="
                       truncate
-                      text-[6px]
+                      text-[7px]
                       font-bold
                       tracking-wide
                       text-white
@@ -349,7 +384,7 @@ function Hero() {
                     className="
                       mt-1
                       truncate
-                      text-[5px]
+                      text-[6px]
                       leading-3
                       text-gray-500
 
@@ -364,9 +399,9 @@ function Hero() {
             })}
           </div>
 
-          {/* =====================================================
+          {/* ======================================================
               PRICE
-          ====================================================== */}
+          ======================================================= */}
 
           <div
             className="
@@ -392,6 +427,7 @@ function Hero() {
                   uppercase
                   tracking-wider
                   text-gray-500
+
                   sm:text-[9px]
                 "
               >
@@ -405,6 +441,7 @@ function Hero() {
                   font-bold
                   text-gray-400
                   line-through
+
                   sm:text-lg
                 "
               >
@@ -413,13 +450,23 @@ function Hero() {
             </div>
 
             {/* Promo */}
-            <div className="bg-purple-600/20 px-3 py-3 sm:px-5 sm:py-4">
+            <div
+              className="
+                bg-purple-600/20
+                px-3
+                py-3
+
+                sm:px-5
+                sm:py-4
+              "
+            >
               <p
                 className="
                   text-[6px]
                   uppercase
                   tracking-wider
                   text-purple-300
+
                   sm:text-[9px]
                 "
               >
@@ -432,6 +479,7 @@ function Hero() {
                   text-[17px]
                   font-black
                   text-yellow-300
+
                   sm:text-2xl
                 "
               >
@@ -447,6 +495,7 @@ function Hero() {
                   uppercase
                   tracking-wider
                   text-gray-500
+
                   sm:text-[9px]
                 "
               >
@@ -459,6 +508,7 @@ function Hero() {
                   text-[13px]
                   font-bold
                   text-white
+
                   sm:text-lg
                 "
               >
@@ -467,9 +517,9 @@ function Hero() {
             </div>
           </div>
 
-          {/* =====================================================
+          {/* ======================================================
               BUTTONS
-          ====================================================== */}
+          ======================================================= */}
 
           <div
             className="
@@ -538,6 +588,7 @@ function Hero() {
                     uppercase
                     tracking-wider
                     opacity-70
+
                     sm:text-[8px]
                   "
                 >
@@ -550,6 +601,7 @@ function Hero() {
                     truncate
                     text-[10px]
                     font-bold
+
                     sm:text-sm
                   "
                 >
@@ -595,13 +647,18 @@ function Hero() {
           </div>
         </div>
 
-        {/* =======================================================
-            PRODUCT + RIGHT SIDE CONTENT
+        {/* ========================================================
+            PRODUCT + RIGHT BENEFITS
 
-            MOBILE:
-            This is absolutely positioned so it NEVER moves
-            underneath the left content.
-        ======================================================== */}
+            THIS IS THE IMPORTANT FIX.
+
+            On MOBILE these are ABSOLUTELY POSITIONED.
+
+            Product starts around the WP-66 / heading area.
+            Benefits start beside the heading and continue downward.
+
+            They NEVER become a separate row.
+        ========================================================= */}
 
         <div
           className="
@@ -609,21 +666,27 @@ function Hero() {
             absolute
             z-20
 
-            /* ================= MOBILE ================= */
+            /* =================================================
+               MOBILE
+               ================================================= */
 
             right-0
-            top-[82px]
-            h-[590px]
-            w-[51%]
+            top-[170px]
+            h-[620px]
+            w-[49%]
 
-            /* ================= TABLET ================= */
+            /* =================================================
+               SMALL MOBILE
+               ================================================= */
 
-            sm:right-[-5px]
-            sm:top-[105px]
-            sm:h-[640px]
-            sm:w-[49%]
+            sm:right-0
+            sm:top-[185px]
+            sm:h-[690px]
+            sm:w-[47%]
 
-            /* ================= DESKTOP ================= */
+            /* =================================================
+               DESKTOP
+               ================================================= */
 
             lg:relative
             lg:right-auto
@@ -632,59 +695,56 @@ function Hero() {
             lg:w-full
           "
         >
-          {/* =====================================================
+          {/* ======================================================
               PRODUCT GLOW
-          ====================================================== */}
+          ======================================================= */}
 
           <div
             className="
               absolute
-              left-[42%]
-              top-[38%]
-              h-[270px]
-              w-[190px]
+              left-1/2
+              top-[190px]
+              h-[260px]
+              w-[200px]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
               bg-purple-600/30
               blur-[80px]
 
-              sm:h-[360px]
+              sm:top-[220px]
+              sm:h-[340px]
               sm:w-[260px]
               sm:blur-[100px]
 
+              lg:top-1/2
               lg:h-[430px]
               lg:w-[330px]
               lg:blur-[110px]
             "
           />
 
-          {/* =====================================================
+          {/* ======================================================
               POWER BANK
 
               MOBILE:
-              Large.
-              Starts around the WP-66 / heading area.
-              Stays on the RIGHT.
-          ====================================================== */}
+              LARGE and starts high, around WP-66.
+          ======================================================= */}
 
           <div
             className="
               absolute
+              left-1/2
+              top-[0px]
+              flex
+              -translate-x-1/2
+              items-start
+              justify-center
 
-              /* MOBILE POSITION */
-              left-[0]
-              top-[5px]
-
-              /* TABLET */
-              sm:left-[-4%]
               sm:top-[5px]
 
-              /* DESKTOP */
               lg:inset-0
-              lg:flex
               lg:items-center
-              lg:justify-center
             "
           >
             <img
@@ -692,14 +752,12 @@ function Hero() {
               alt="WEKOME WP-66 20,000mAh Power Bank"
               className="
                 h-auto
-                w-[155px]
+                w-[190px]
                 max-w-none
                 object-contain
                 drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
 
-                sm:w-[235px]
-
-                md:w-[280px]
+                sm:w-[245px]
 
                 lg:w-full
                 lg:max-w-[520px]
@@ -707,35 +765,32 @@ function Hero() {
             />
           </div>
 
-          {/* =====================================================
+          {/* ======================================================
               CAPACITY CARD
 
               MOBILE:
-              Sits immediately to the RIGHT of the power bank.
-          ====================================================== */}
+              Sits immediately beside the power bank.
+          ======================================================= */}
 
           <div
             className="
               absolute
-
-              /* MOBILE */
-              right-[-2px]
-              top-[8px]
-              w-[92px]
+              right-[-5px]
+              top-[160px]
+              z-30
+              w-[125px]
               rounded-xl
               border
               border-purple-400/30
-              bg-black/70
-              p-2
+              bg-black/75
+              p-3
               backdrop-blur-xl
 
-              /* TABLET */
-              sm:right-[-4px]
-              sm:top-[15px]
-              sm:w-[130px]
-              sm:p-3
+              sm:right-[-8px]
+              sm:top-[175px]
+              sm:w-[155px]
+              sm:p-4
 
-              /* DESKTOP */
               lg:right-0
               lg:top-[12%]
               lg:w-[190px]
@@ -745,9 +800,11 @@ function Hero() {
             <div className="flex items-end gap-1">
               <span
                 className="
-                  text-[15px]
+                  text-xl
                   font-black
-                  sm:text-xl
+
+                  sm:text-2xl
+
                   lg:text-3xl
                 "
               >
@@ -757,10 +814,12 @@ function Hero() {
               <span
                 className="
                   mb-1
-                  text-[6px]
+                  text-[9px]
                   font-bold
                   text-purple-400
-                  sm:text-[9px]
+
+                  sm:text-xs
+
                   lg:text-sm
                 "
               >
@@ -771,11 +830,13 @@ function Hero() {
             <p
               className="
                 mt-1
-                text-[5px]
+                text-[6px]
                 uppercase
-                tracking-[0.15em]
+                tracking-[0.2em]
                 text-gray-500
-                sm:text-[7px]
+
+                sm:text-[8px]
+
                 lg:text-[9px]
               "
             >
@@ -787,11 +848,11 @@ function Hero() {
             <p
               className="
                 mt-2
-                text-[6px]
-                leading-3
+                text-[8px]
                 text-gray-300
-                sm:text-[8px]
-                sm:leading-4
+
+                sm:text-[10px]
+
                 lg:text-xs
               "
             >
@@ -801,34 +862,31 @@ function Hero() {
             </p>
           </div>
 
-          {/* =====================================================
-              RIGHT BENEFITS
+          {/* ======================================================
+              BENEFITS
 
               MOBILE:
-              These are beside the power bank,
-              NOT underneath the left content.
+              These start around the same vertical area as
+              "Power That Goes With You" and run down the
+              right-hand side.
 
-              They begin around the same vertical area
-              as "Power That Goes With You".
-          ====================================================== */}
+              This is what was missing from the previous version.
+          ======================================================= */}
 
           <div
             className="
               absolute
-
-              /* MOBILE */
               right-[-2px]
-              top-[145px]
-              w-[100px]
+              top-[395px]
+              z-30
+              w-[175px]
               space-y-4
 
-              /* TABLET */
               sm:right-[-5px]
-              sm:top-[175px]
-              sm:w-[135px]
+              sm:top-[430px]
+              sm:w-[205px]
               sm:space-y-5
 
-              /* DESKTOP */
               lg:bottom-4
               lg:right-0
               lg:top-auto
@@ -845,19 +903,16 @@ function Hero() {
                   className="
                     flex
                     items-center
-                    gap-1.5
+                    gap-2
 
-                    sm:gap-2.5
-
-                    lg:gap-3
+                    sm:gap-3
                   "
                 >
-                  {/* Icon */}
                   <div
                     className="
                       flex
-                      h-7
-                      w-7
+                      h-8
+                      w-8
                       shrink-0
                       items-center
                       justify-center
@@ -872,21 +927,20 @@ function Hero() {
                     "
                   >
                     <Icon
-                      size={12}
+                      size={13}
                       className="sm:h-4 sm:w-4"
                     />
                   </div>
 
-                  {/* Text */}
                   <div className="min-w-0">
                     <p
                       className="
-                        text-[6px]
+                        truncate
+                        text-[7px]
                         font-bold
-                        leading-tight
                         text-white
-                        sm:text-[8px]
-                        lg:text-[9px]
+
+                        sm:text-[9px]
                       "
                     >
                       {benefit.title}
@@ -895,12 +949,11 @@ function Hero() {
                     <p
                       className="
                         mt-0.5
-                        text-[5px]
-                        leading-3
+                        truncate
+                        text-[6px]
                         text-gray-500
-                        sm:text-[7px]
-                        sm:leading-3
-                        lg:text-[8px]
+
+                        sm:text-[8px]
                       "
                     >
                       {benefit.description}

@@ -19,10 +19,6 @@ const iconMap = {
   plane: Plane,
 };
 
-/* ============================================================
-   WHATSAPP LOGO
-============================================================ */
-
 function WhatsAppIcon({ size = 22 }) {
   return (
     <svg
@@ -44,39 +40,35 @@ function Hero() {
       id="home"
       className="
         relative
-        min-h-[760px]
         overflow-hidden
         bg-[#05040b]
         pt-[76px]
         text-white
-
-        sm:min-h-[850px]
-
+        min-h-[820px]
+        sm:min-h-[900px]
         lg:min-h-screen
       "
     >
-      {/* ==========================================================
+      {/* =====================================================
           BACKGROUND
-      =========================================================== */}
+      ====================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Main purple glow */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Main glow */}
         <div
           className="
             absolute
             -right-[220px]
-            top-[40px]
+            top-[30px]
             h-[520px]
             w-[520px]
             rounded-full
             bg-purple-700/20
             blur-[120px]
-
-            sm:h-[700px]
-            sm:w-[700px]
-
-            lg:-right-[180px]
-            lg:top-[60px]
+            sm:h-[650px]
+            sm:w-[650px]
+            lg:-right-40
+            lg:top-20
           "
         />
 
@@ -84,16 +76,15 @@ function Hero() {
         <div
           className="
             absolute
-            -right-[100px]
-            bottom-[20px]
-            h-[400px]
-            w-[400px]
+            right-[0]
+            bottom-[50px]
+            h-[320px]
+            w-[320px]
             rounded-full
             bg-purple-600/15
-            blur-[120px]
-
-            lg:h-[500px]
-            lg:w-[500px]
+            blur-[100px]
+            sm:h-[450px]
+            sm:w-[450px]
           "
         />
 
@@ -102,22 +93,16 @@ function Hero() {
           className="
             absolute
             -right-[330px]
-            -top-[300px]
+            -top-[280px]
             h-[700px]
             w-[700px]
             rounded-full
             border
             border-purple-500/20
-
-            sm:-right-[280px]
-            sm:-top-[240px]
-            sm:h-[800px]
-            sm:w-[800px]
-
-            lg:-right-[250px]
-            lg:-top-[260px]
-            lg:h-[900px]
-            lg:w-[900px]
+            sm:-right-[270px]
+            sm:-top-[230px]
+            sm:h-[760px]
+            sm:w-[760px]
           "
         />
 
@@ -125,30 +110,24 @@ function Hero() {
         <div
           className="
             absolute
-            -right-[310px]
-            -top-[270px]
-            h-[650px]
-            w-[650px]
+            -right-[300px]
+            -top-[250px]
+            h-[640px]
+            w-[640px]
             rounded-full
             border
             border-purple-400/20
-
-            sm:-right-[260px]
-            sm:-top-[220px]
-            sm:h-[760px]
-            sm:w-[760px]
-
-            lg:-right-[230px]
-            lg:-top-[240px]
-            lg:h-[850px]
-            lg:w-[850px]
+            sm:-right-[240px]
+            sm:-top-[210px]
+            sm:h-[700px]
+            sm:w-[700px]
           "
         />
       </div>
 
-      {/* ==========================================================
-          MAIN HERO CONTAINER
-      =========================================================== */}
+      {/* =====================================================
+          HERO CONTAINER
+      ====================================================== */}
 
       <div
         className="
@@ -157,42 +136,226 @@ function Hero() {
           mx-auto
           max-w-[1440px]
           px-4
-
-          sm:px-6
-
+          sm:px-7
           lg:grid
           lg:min-h-[calc(100vh-76px)]
-          lg:grid-cols-[1fr_1fr]
+          lg:grid-cols-2
           lg:items-center
           lg:px-12
         "
       >
-        {/* ========================================================
-            MOBILE/DESKTOP LEFT CONTENT
-        ========================================================= */}
+
+        {/* =====================================================
+            MOBILE PRODUCT
+            IMPORTANT:
+
+            This is ABSOLUTELY positioned on mobile.
+
+            It starts beside WP-66 and stays on the RIGHT.
+            It does NOT create a new row.
+        ====================================================== */}
+
+        <div
+          className="
+            pointer-events-none
+            absolute
+            right-[-12px]
+            top-[82px]
+            z-20
+            flex
+            h-[350px]
+            w-[47%]
+            items-start
+            justify-center
+
+            sm:right-[-8px]
+            sm:top-[88px]
+            sm:h-[430px]
+            sm:w-[45%]
+
+            lg:relative
+            lg:right-auto
+            lg:top-auto
+            lg:h-[680px]
+            lg:w-full
+          "
+        >
+          {/* Product glow */}
+          <div
+            className="
+              absolute
+              left-1/2
+              top-[45%]
+              h-[240px]
+              w-[190px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-purple-600/30
+              blur-[80px]
+
+              sm:h-[340px]
+              sm:w-[260px]
+              sm:blur-[100px]
+
+              lg:h-[430px]
+              lg:w-[330px]
+              lg:blur-[110px]
+            "
+          />
+
+          {/* =================================================
+              POWER BANK
+          ================================================= */}
+
+          <img
+            src="/images/products/powerbank-hero.png"
+            alt="WEKOME WP-66 20,000mAh Power Bank"
+            className="
+              relative
+              z-10
+              mt-0
+              h-auto
+              w-[275px]
+              max-w-none
+              object-contain
+              drop-shadow-[0_30px_70px_rgba(0,0,0,0.75)]
+
+              sm:w-[350px]
+
+              lg:w-full
+              lg:max-w-[540px]
+            "
+          />
+
+          {/* =================================================
+              CAPACITY CARD
+              Desktop / tablet only
+          ================================================= */}
+
+          <div
+            className="
+              absolute
+              right-[-5px]
+              top-[8%]
+              z-30
+              hidden
+              w-[190px]
+              rounded-2xl
+              border
+              border-purple-400/30
+              bg-black/70
+              p-5
+              backdrop-blur-xl
+              lg:block
+            "
+          >
+            <div className="flex items-end gap-1">
+              <span className="text-3xl font-black">
+                {productData.capacity}
+              </span>
+
+              <span className="mb-1 text-sm font-bold text-purple-400">
+                {productData.capacityUnit}
+              </span>
+            </div>
+
+            <p className="mt-2 text-[9px] uppercase tracking-[0.2em] text-gray-500">
+              Real Capacity
+            </p>
+
+            <div className="mt-3 h-px bg-white/10" />
+
+            <p className="mt-3 text-xs text-gray-300">
+              More power.
+              <br />
+              Less worry.
+            </p>
+          </div>
+
+          {/* =================================================
+              DESKTOP BENEFITS
+          ================================================= */}
+
+          <div
+            className="
+              absolute
+              bottom-4
+              right-0
+              z-30
+              hidden
+              w-[220px]
+              space-y-4
+              lg:block
+            "
+          >
+            {productData.benefits.slice(0, 4).map((benefit) => {
+              const Icon = iconMap[benefit.icon];
+
+              return (
+                <div
+                  key={benefit.title}
+                  className="flex items-center gap-3"
+                >
+                  <div
+                    className="
+                      flex
+                      h-9
+                      w-9
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-purple-500/30
+                      bg-purple-500/10
+                      text-purple-300
+                    "
+                  >
+                    <Icon size={16} />
+                  </div>
+
+                  <div>
+                    <p className="text-[9px] font-bold text-white">
+                      {benefit.title}
+                    </p>
+
+                    <p className="mt-1 text-[8px] text-gray-500">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* =====================================================
+            LEFT CONTENT
+
+            MOBILE:
+            Content deliberately stays LEFT at ~57%.
+            Product occupies RIGHT ~43%.
+        ====================================================== */}
 
         <div
           className="
             relative
-            z-30
+            z-40
+            w-[58%]
+            pt-7
 
-            /* MOBILE */
-            w-[62%]
-            pt-8
+            sm:w-[57%]
+            sm:pt-10
 
-            /* TABLET */
-            sm:w-[60%]
-            sm:pt-12
-
-            /* DESKTOP */
             lg:w-full
             lg:max-w-[650px]
             lg:pt-6
           "
         >
-          {/* ======================================================
+          {/* =================================================
               PRODUCT BADGE
-          ======================================================= */}
+          ================================================= */}
 
           <div
             className="
@@ -203,8 +366,6 @@ function Hero() {
 
               sm:mb-6
               sm:gap-3
-
-              lg:mb-6
             "
           >
             <span
@@ -227,9 +388,9 @@ function Hero() {
             <span
               className="
                 whitespace-nowrap
-                text-[8px]
+                text-[7px]
                 font-medium
-                tracking-[0.12em]
+                tracking-[0.1em]
                 text-gray-400
 
                 sm:text-xs
@@ -240,19 +401,19 @@ function Hero() {
             </span>
           </div>
 
-          {/* ======================================================
+          {/* =================================================
               HEADING
-          ======================================================= */}
+          ================================================= */}
 
           <h1
             className="
-              max-w-[340px]
+              max-w-[270px]
               text-[38px]
               font-black
               leading-[0.91]
               tracking-[-0.055em]
 
-              sm:max-w-[430px]
+              sm:max-w-[400px]
               sm:text-[54px]
 
               md:text-[64px]
@@ -278,54 +439,51 @@ function Hero() {
             </span>
           </h1>
 
-          {/* ======================================================
+          {/* =================================================
               DESCRIPTION
-          ======================================================= */}
+          ================================================= */}
 
           <p
             className="
               mt-5
-              max-w-[330px]
-              text-[11px]
+              max-w-[300px]
+              text-[10px]
               leading-5
               text-gray-400
 
               sm:mt-7
-              sm:max-w-[500px]
+              sm:max-w-[400px]
               sm:text-base
               sm:leading-7
 
+              lg:max-w-[500px]
               lg:text-lg
             "
           >
             {productData.description}
           </p>
 
-          {/* ======================================================
+          {/* =================================================
               FEATURES
 
-              MOBILE:
-              They remain on the left/lower portion.
-              They DO NOT push the product into a new row.
-          ======================================================= */}
+              IMPORTANT:
+              These remain underneath the LEFT content.
+              They don't move underneath the power bank.
+          ================================================= */}
 
           <div
             className="
               mt-7
               grid
-              w-[calc(100vw-32px)]
-              max-w-[650px]
               grid-cols-2
-              gap-x-5
-              gap-y-6
+              gap-x-3
+              gap-y-5
 
               sm:mt-9
               sm:grid-cols-5
               sm:gap-3
 
-              lg:mt-9
-              lg:grid
-              lg:grid-cols-5
+              lg:max-w-[650px]
             "
           >
             {productData.features.slice(0, 5).map((feature) => {
@@ -334,11 +492,7 @@ function Hero() {
               return (
                 <div
                   key={feature.title}
-                  className="
-                    min-w-0
-                    flex
-                    flex-col
-                  "
+                  className="min-w-0"
                 >
                   <div
                     className="
@@ -356,8 +510,7 @@ function Hero() {
 
                       sm:h-10
                       sm:w-10
-
-                      lg:mb-3
+                      sm:mb-3
                     "
                   >
                     <Icon
@@ -399,9 +552,9 @@ function Hero() {
             })}
           </div>
 
-          {/* ======================================================
+          {/* =================================================
               PRICE
-          ======================================================= */}
+          ================================================= */}
 
           <div
             className="
@@ -421,105 +574,41 @@ function Hero() {
           >
             {/* Original */}
             <div className="px-3 py-3 sm:px-5 sm:py-4">
-              <p
-                className="
-                  text-[6px]
-                  uppercase
-                  tracking-wider
-                  text-gray-500
-
-                  sm:text-[9px]
-                "
-              >
+              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
                 Original Price
               </p>
 
-              <p
-                className="
-                  mt-1
-                  text-[13px]
-                  font-bold
-                  text-gray-400
-                  line-through
-
-                  sm:text-lg
-                "
-              >
+              <p className="mt-1 text-[13px] font-bold text-gray-400 line-through sm:text-lg">
                 {productData.originalPrice}
               </p>
             </div>
 
             {/* Promo */}
-            <div
-              className="
-                bg-purple-600/20
-                px-3
-                py-3
-
-                sm:px-5
-                sm:py-4
-              "
-            >
-              <p
-                className="
-                  text-[6px]
-                  uppercase
-                  tracking-wider
-                  text-purple-300
-
-                  sm:text-[9px]
-                "
-              >
+            <div className="bg-purple-600/20 px-3 py-3 sm:px-5 sm:py-4">
+              <p className="text-[6px] uppercase tracking-wider text-purple-300 sm:text-[9px]">
                 Promo Price
               </p>
 
-              <p
-                className="
-                  mt-1
-                  text-[17px]
-                  font-black
-                  text-yellow-300
-
-                  sm:text-2xl
-                "
-              >
+              <p className="mt-1 text-[17px] font-black text-yellow-300 sm:text-2xl">
                 {productData.promoPrice}
               </p>
             </div>
 
             {/* Savings */}
             <div className="px-3 py-3 sm:px-5 sm:py-4">
-              <p
-                className="
-                  text-[6px]
-                  uppercase
-                  tracking-wider
-                  text-gray-500
-
-                  sm:text-[9px]
-                "
-              >
+              <p className="text-[6px] uppercase tracking-wider text-gray-500 sm:text-[9px]">
                 You Save
               </p>
 
-              <p
-                className="
-                  mt-1
-                  text-[13px]
-                  font-bold
-                  text-white
-
-                  sm:text-lg
-                "
-              >
+              <p className="mt-1 text-[13px] font-bold text-white sm:text-lg">
                 {productData.savings}
               </p>
             </div>
           </div>
 
-          {/* ======================================================
+          {/* =================================================
               BUTTONS
-          ======================================================= */}
+          ================================================= */}
 
           <div
             className="
@@ -610,7 +699,7 @@ function Hero() {
               </span>
             </a>
 
-            {/* Shop */}
+            {/* Shop Now */}
             <a
               href="#order"
               className="
@@ -644,324 +733,6 @@ function Hero() {
 
               <span>SHOP NOW</span>
             </a>
-          </div>
-        </div>
-
-        {/* ========================================================
-            PRODUCT + RIGHT BENEFITS
-
-            THIS IS THE IMPORTANT FIX.
-
-            On MOBILE these are ABSOLUTELY POSITIONED.
-
-            Product starts around the WP-66 / heading area.
-            Benefits start beside the heading and continue downward.
-
-            They NEVER become a separate row.
-        ========================================================= */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            z-20
-
-            /* =================================================
-               MOBILE
-               ================================================= */
-
-            right-0
-            top-[170px]
-            h-[620px]
-            w-[49%]
-
-            /* =================================================
-               SMALL MOBILE
-               ================================================= */
-
-            sm:right-0
-            sm:top-[185px]
-            sm:h-[690px]
-            sm:w-[47%]
-
-            /* =================================================
-               DESKTOP
-               ================================================= */
-
-            lg:relative
-            lg:right-auto
-            lg:top-auto
-            lg:h-[650px]
-            lg:w-full
-          "
-        >
-          {/* ======================================================
-              PRODUCT GLOW
-          ======================================================= */}
-
-          <div
-            className="
-              absolute
-              left-1/2
-              top-[190px]
-              h-[260px]
-              w-[200px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-purple-600/30
-              blur-[80px]
-
-              sm:top-[220px]
-              sm:h-[340px]
-              sm:w-[260px]
-              sm:blur-[100px]
-
-              lg:top-1/2
-              lg:h-[430px]
-              lg:w-[330px]
-              lg:blur-[110px]
-            "
-          />
-
-          {/* ======================================================
-              POWER BANK
-
-              MOBILE:
-              LARGE and starts high, around WP-66.
-          ======================================================= */}
-
-          <div
-            className="
-              absolute
-              left-1/2
-              top-[0px]
-              flex
-              -translate-x-1/2
-              items-start
-              justify-center
-
-              sm:top-[5px]
-
-              lg:inset-0
-              lg:items-center
-            "
-          >
-            <img
-              src="/images/products/powerbank-hero.png"
-              alt="WEKOME WP-66 20,000mAh Power Bank"
-              className="
-                h-auto
-                w-[190px]
-                max-w-none
-                object-contain
-                drop-shadow-[0_30px_70px_rgba(0,0,0,0.7)]
-
-                sm:w-[245px]
-
-                lg:w-full
-                lg:max-w-[520px]
-              "
-            />
-          </div>
-
-          {/* ======================================================
-              CAPACITY CARD
-
-              MOBILE:
-              Sits immediately beside the power bank.
-          ======================================================= */}
-
-          <div
-            className="
-              absolute
-              right-[-5px]
-              top-[160px]
-              z-30
-              w-[125px]
-              rounded-xl
-              border
-              border-purple-400/30
-              bg-black/75
-              p-3
-              backdrop-blur-xl
-
-              sm:right-[-8px]
-              sm:top-[175px]
-              sm:w-[155px]
-              sm:p-4
-
-              lg:right-0
-              lg:top-[12%]
-              lg:w-[190px]
-              lg:p-5
-            "
-          >
-            <div className="flex items-end gap-1">
-              <span
-                className="
-                  text-xl
-                  font-black
-
-                  sm:text-2xl
-
-                  lg:text-3xl
-                "
-              >
-                {productData.capacity}
-              </span>
-
-              <span
-                className="
-                  mb-1
-                  text-[9px]
-                  font-bold
-                  text-purple-400
-
-                  sm:text-xs
-
-                  lg:text-sm
-                "
-              >
-                {productData.capacityUnit}
-              </span>
-            </div>
-
-            <p
-              className="
-                mt-1
-                text-[6px]
-                uppercase
-                tracking-[0.2em]
-                text-gray-500
-
-                sm:text-[8px]
-
-                lg:text-[9px]
-              "
-            >
-              Real Capacity
-            </p>
-
-            <div className="mt-2 h-px bg-white/10" />
-
-            <p
-              className="
-                mt-2
-                text-[8px]
-                text-gray-300
-
-                sm:text-[10px]
-
-                lg:text-xs
-              "
-            >
-              More power.
-              <br />
-              Less worry.
-            </p>
-          </div>
-
-          {/* ======================================================
-              BENEFITS
-
-              MOBILE:
-              These start around the same vertical area as
-              "Power That Goes With You" and run down the
-              right-hand side.
-
-              This is what was missing from the previous version.
-          ======================================================= */}
-
-          <div
-            className="
-              absolute
-              right-[-2px]
-              top-[395px]
-              z-30
-              w-[175px]
-              space-y-4
-
-              sm:right-[-5px]
-              sm:top-[430px]
-              sm:w-[205px]
-              sm:space-y-5
-
-              lg:bottom-4
-              lg:right-0
-              lg:top-auto
-              lg:w-[220px]
-              lg:space-y-4
-            "
-          >
-            {productData.benefits.slice(0, 4).map((benefit) => {
-              const Icon = iconMap[benefit.icon];
-
-              return (
-                <div
-                  key={benefit.title}
-                  className="
-                    flex
-                    items-center
-                    gap-2
-
-                    sm:gap-3
-                  "
-                >
-                  <div
-                    className="
-                      flex
-                      h-8
-                      w-8
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-purple-500/30
-                      bg-purple-500/10
-                      text-purple-300
-
-                      sm:h-9
-                      sm:w-9
-                    "
-                  >
-                    <Icon
-                      size={13}
-                      className="sm:h-4 sm:w-4"
-                    />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p
-                      className="
-                        truncate
-                        text-[7px]
-                        font-bold
-                        text-white
-
-                        sm:text-[9px]
-                      "
-                    >
-                      {benefit.title}
-                    </p>
-
-                    <p
-                      className="
-                        mt-0.5
-                        truncate
-                        text-[6px]
-                        text-gray-500
-
-                        sm:text-[8px]
-                      "
-                    >
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>

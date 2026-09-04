@@ -252,23 +252,21 @@ export default function Hero() {
           {/* -----------------------------------------------------
               PRODUCT
           ------------------------------------------------------ */}
+{/* PRODUCT */}
+<div className="relative z-30 flex h-[620px] items-center justify-center">
+  {/* Purple glow */}
+  <div className="absolute left-1/2 top-1/2 h-[400px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/20 blur-[100px]" />
 
-          <div className="relative flex h-[620px] items-center justify-center">
-            {/* glow behind product */}
-            <div className="absolute left-1/2 top-[46%] h-[360px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/[0.12] blur-[90px]" />
-
-            {/* decorative ring */}
-            <div className="absolute left-1/2 top-[46%] h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/[0.05]" />
-
-            <div className="absolute left-1/2 top-[46%] h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/[0.06]" />
-
-            {/* product */}
-            <img
-              src="/products/wp66-main.png"
-              alt="Wekome WP-66 Kinkong Series 20,000mAh Power Bank"
-              className="relative z-10 w-[430px] max-w-none object-contain drop-shadow-[0_30px_65px_rgba(0,0,0,0.65)] xl:w-[500px]"
-            />
-
+  {/* Product */}
+  <img
+    src="/products/wp66-main.png"
+    alt="Wekome WP-66 Kinkong Series 20,000mAh Power Bank"
+    className="relative z-50 block h-auto w-[430px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)] xl:w-[500px]"
+    onError={(e) => {
+      console.error("Power bank image failed to load:", e.currentTarget.src);
+    }}
+  />
+</div>
             {/* floating capacity label */}
             <div className="absolute bottom-[45px] left-[4%] z-20 rounded-xl border border-white/10 bg-[#0b0913]/85 px-4 py-3 backdrop-blur-xl">
               <p className="text-[8px] font-semibold tracking-[0.15em] text-gray-500">
@@ -365,19 +363,20 @@ export default function Hero() {
             MOBILE PRODUCT
         ====================================================== */}
 
-        <div className="pointer-events-none absolute right-[17%] top-[116px] z-10 flex w-[40%] justify-center sm:right-[18%] sm:top-[120px]">
-          {/* glow */}
-          <div className="absolute left-1/2 top-1/2 h-[190px] w-[150px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/[0.16] blur-[55px] sm:h-[240px] sm:w-[190px]" />
+<div className="absolute right-[15%] top-[115px] z-50 flex w-[42%] items-center justify-center sm:right-[17%]">
+  {/* Glow */}
+  <div className="absolute left-1/2 top-1/2 h-[220px] w-[170px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/20 blur-[60px]" />
 
-          {/* rings */}
-          <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/[0.05] sm:h-[270px] sm:w-[270px] sm:-translate-x-1/2 sm:-translate-y-1/2" />
-
-          <img
-            src="/products/wp66-main.png"
-            alt="Wekome WP-66 20,000mAh Power Bank"
-            className="relative z-10 w-[155px] max-w-none scale-[1.1] object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.7)] sm:w-[195px]"
-          />
-        </div>
+  {/* Power Bank */}
+  <img
+    src="/products/wp66-main.png"
+    alt="Wekome WP-66 20,000mAh Power Bank"
+    className="relative z-50 block h-auto w-[175px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.8)] sm:w-[210px]"
+    onError={(e) => {
+      console.error("Power bank image failed to load:", e.currentTarget.src);
+    }}
+  />
+</div>
 
         {/* =====================================================
             MOBILE CAPACITY CARD

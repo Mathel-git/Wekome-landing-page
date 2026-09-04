@@ -62,7 +62,7 @@ const benefits = [
   },
 ];
 
-function WhatsAppIcon({ size = 17 }) {
+function WhatsAppIcon({ size = 18 }) {
   return (
     <svg
       width={size}
@@ -71,14 +71,16 @@ function WhatsAppIcon({ size = 17 }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
+      className="shrink-0"
     >
       <path
-        d="M20.52 3.48A11.83 11.83 0 0 0 12.08 0C5.54 0 .22 5.32.22 11.86c0 2.09.55 4.13 1.6 5.93L.12 24l6.36-1.67a11.86 11.86 0 0 0 5.6 1.43h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.43-8.42Z"
-        fill="currentColor"
+        d="M12 2C6.477 2 2 6.477 2 12c0 1.76.454 3.414 1.25 4.87L2 22l5.27-1.22A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Z"
+        fill="#25D366"
       />
+
       <path
-        d="M17.46 13.96c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.03-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.08 4.5.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
-        fill="#05040b"
+        d="M16.7 13.93c-.26-.13-1.54-.76-1.78-.84-.24-.09-.41-.13-.59.13-.17.26-.67.84-.82 1.01-.15.18-.3.2-.56.07-.26-.13-1.1-.41-2.1-1.3-.78-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.59-1.42-.8-1.95-.21-.51-.42-.44-.59-.45h-.5c-.17 0-.45.06-.69.32-.24.26-.91.89-.91 2.17s.93 2.52 1.06 2.69c.13.17 1.83 2.8 4.43 3.92.62.27 1.1.43 1.48.55.62.2 1.19.17 1.64.1.5-.07 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.07-.11-.24-.17-.5-.3Z"
+        fill="white"
       />
     </svg>
   );
@@ -225,14 +227,14 @@ export default function Hero() {
             {/* CTA */}
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="https://wa.me/2348162409010?text=Hello%20I%20want%20to%20order%20the%20Wekome%20WP-66%20Power%20Bank"
-                target="_blank"
-                rel="noreferrer"
-                className="group flex h-11 items-center gap-2 rounded-full bg-white px-5 text-[9px] font-black uppercase tracking-[0.08em] text-[#05040b] transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-100"
-              >
-                <WhatsAppIcon size={16} />
-                WhatsApp
-              </a>
+  href="https://wa.me/2348162409010?text=Hello%20I%20want%20to%20order%20the%20Wekome%20WP-66%20Power%20Bank"
+  target="_blank"
+  rel="noreferrer"
+  className="group flex h-11 items-center gap-2 rounded-full bg-white px-5 text-[9px] font-black uppercase tracking-[0.08em] text-[#05040b] transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-100"
+>
+  <WhatsAppIcon size={17} />
+  WhatsApp
+</a>
 
               <a
                 href="#order"
@@ -468,14 +470,14 @@ export default function Hero() {
 
         <div className="absolute left-4 top-[550px] z-40 flex w-[54%] gap-2 sm:left-6 sm:top-[565px] sm:w-[52%]">
           <a
-            href="https://wa.me/2348162409010?text=Hello%20I%20want%20to%20order%20the%20Wekome%20WP-66%20Power%20Bank"
-            target="_blank"
-            rel="noreferrer"
-            className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-full bg-white px-2 text-[7px] font-black uppercase tracking-[0.04em] text-[#05040b] transition-all duration-300 active:scale-95 sm:h-11 sm:text-[8px]"
-          >
-            <WhatsAppIcon size={14} />
-            WhatsApp
-          </a>
+  href="https://wa.me/2348162409010?text=Hello%20I%20want%20to%20order%20the%20Wekome%20WP-66%20Power%20Bank"
+  target="_blank"
+  rel="noreferrer"
+  className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-full bg-white px-2 text-[7px] font-black uppercase tracking-[0.04em] text-[#05040b] transition-all duration-300 active:scale-95 sm:h-11 sm:text-[8px]"
+>
+  <WhatsAppIcon size={15} />
+  WhatsApp
+</a>
 
           <a
             href="#order"

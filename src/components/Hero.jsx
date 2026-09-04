@@ -379,7 +379,7 @@ export default function Hero() {
 </div>
 
         {/* =====================================================
-            MOBILE CAPACITY CARD
+            MOBILE CAPACITY CARD Updated
         ====================================================== */}
 
         <div className="absolute right-3 top-[335px] z-30 w-[38%] sm:right-5 sm:top-[350px] sm:w-[35%]">

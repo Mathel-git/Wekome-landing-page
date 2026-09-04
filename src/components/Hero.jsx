@@ -316,9 +316,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* =========================================================
+      {/*
           MOBILE HERO
       ========================================================== */}
 
@@ -474,7 +473,7 @@ export default function Hero() {
   rel="noreferrer"
   className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-full bg-white px-2 text-[7px] font-black uppercase tracking-[0.04em] text-[#05040b] transition-all duration-300 active:scale-95 sm:h-11 sm:text-[8px]"
 >
-  <WhatsAppIcon size={15} />
+  <WhatsAppIcon size={1} />
   WhatsApp
 </a>
 

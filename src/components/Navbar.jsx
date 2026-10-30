@@ -1,3 +1,4 @@
+
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#05040b]/85 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        
+
         {/* Logo */}
         <a
           href="#home"
@@ -62,7 +63,7 @@ function Navbar() {
 
         {/* Desktop Order Button */}
         <a
-          href="#order"
+          href="#website-order"
           className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-500 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.08em] text-white shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(168,85,247,0.45)] lg:flex"
         >
           <span>Order Now</span>
@@ -100,8 +101,9 @@ function Navbar() {
             </a>
           ))}
 
+          {/* Mobile Order Button */}
           <a
-            href="#order"
+            href="#website-order"
             onClick={closeMenu}
             className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-500 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-white"
           >

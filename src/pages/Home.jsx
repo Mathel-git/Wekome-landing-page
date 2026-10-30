@@ -5,6 +5,7 @@ import CompatibilityColors from "../components/CompatibilityColors";
 import TrustBar from "../components/TrustBar";
 import ProductCTA from "../components/ProductCTA";
 import Footer from "../components/Footer";
+import OrderForm from "../components/OrderForm";
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
       <TrustBar />
       <ProductCTA />
       <Footer />
+      <OrderForm /> 
     </main>
   );
 }

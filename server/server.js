@@ -4,9 +4,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
-import lockfile from "proper-lockfile";
-import fs from "node:fs/promises";
-import path from "node:path";
 import {
   randomBytes,
   createHmac,
@@ -15,35 +12,22 @@ import {
 
 const app = express();
 
-const PORT = Number(process.env.PORT || 3001);
 const PRICE = Number(process.env.PRODUCT_PRICE_NAIRA || 20900);
 const CURRENCY = "NGN";
-const API_BASE_URL = process.env.API_BASE_URL;
-const FRONTEND_URL = process.env.FRONTEND_URL;
 
-const STATE_FILE = path.resolve(
-  process.env.ORDER_STATE_FILE ||
-    "./private-data/order-notifications.json"
-);
+const API_BASE_URL = (
+  process.env.API_BASE_URL ||
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "")
+).replace(/\/+$/, "");
+
+const FRONTEND_URL = (process.env.FRONTEND_URL || "").replace(/\/+$/, "");
 
 const allowedColours = ["Black", "White", "Blue", "Purple"];
 
-if (
-  !process.env.PAYSTACK_SECRET_KEY ||
-  !API_BASE_URL ||
-  !FRONTEND_URL
-) {
+if (!process.env.PAYSTACK_SECRET_KEY || !FRONTEND_URL) {
   throw new Error("Missing required payment server configuration.");
-}
-
-await fs.mkdir(path.dirname(STATE_FILE), { recursive: true });
-
-try {
-  await fs.access(STATE_FILE);
-} catch {
-  await fs.writeFile(STATE_FILE, JSON.stringify({}), {
-    mode: 0o600,
-  });
 }
 
 app.use(
@@ -177,6 +161,14 @@ async function verifyTransaction(reference) {
     throw new Error("Invalid order quantity.");
   }
 
+  if (!allowedColours.includes(order.colour)) {
+    throw new Error("Invalid product colour.");
+  }
+
+  if (!["delivery", "pickup"].includes(order.delivery)) {
+    throw new Error("Invalid delivery option.");
+  }
+
   const expectedKobo = PRICE * quantity * 100;
 
   if (Number(payment.amount) !== expectedKobo) {
@@ -285,53 +277,39 @@ async function sendWhatsApp(order) {
   }
 }
 
-// Track email and WhatsApp delivery independently per payment reference.
+// Send email and WhatsApp notifications independently.
+// Without persistent storage, repeated callbacks or webhooks
+// can result in duplicate notifications.
 async function notifySeller(order) {
-  const release = await lockfile.lock(STATE_FILE, {
-    retries: { retries: 8, minTimeout: 100, maxTimeout: 1000 },
-  });
+  const result = {
+    emailSent: false,
+    whatsappSent: false,
+  };
 
   try {
-    const state = JSON.parse(await fs.readFile(STATE_FILE, "utf8"));
-
-    const current = state[order.reference] || {
-      emailSent: false,
-      whatsappSent: false,
-    };
-
-    if (!current.emailSent) {
-      try {
-        await sendEmail(order);
-        current.emailSent = true;
-      } catch (error) {
-        console.error("Email notification failed:", error.message);
-      }
-    }
-
-    if (!current.whatsappSent) {
-      try {
-        await sendWhatsApp(order);
-        current.whatsappSent = true;
-      } catch (error) {
-        console.error("WhatsApp notification failed:", error.message);
-      }
-    }
-
-    state[order.reference] = current;
-
-    await fs.writeFile(STATE_FILE, JSON.stringify(state, null, 2), {
-      mode: 0o600,
-    });
-
-    return current;
-  } finally {
-    await release();
+    await sendEmail(order);
+    result.emailSent = true;
+  } catch (error) {
+    console.error("Email notification failed:", error.message);
   }
+
+  try {
+    await sendWhatsApp(order);
+    result.whatsappSent = true;
+  } catch (error) {
+    console.error("WhatsApp notification failed:", error.message);
+  }
+
+  return result;
 }
 
 // Start a Paystack checkout.
 app.post("/api/initialize", async (req, res) => {
   try {
+    if (!API_BASE_URL) {
+      return fail(res, 500, "Payment server URL is not configured.");
+    }
+
     const order = validateOrder(req.body);
     const reference = `WP66-${randomBytes(12).toString("hex")}`;
 
@@ -373,7 +351,6 @@ app.post("/api/initialize", async (req, res) => {
 app.get("/api/verify/:reference", async (req, res) => {
   try {
     const order = await verifyTransaction(req.params.reference);
-
     const notifications = await notifySeller(order);
 
     res.json({
@@ -408,7 +385,6 @@ app.get("/api/paystack/callback", async (req, res) => {
     );
   }
 
-  // Notification failures must not change a verified payment into a failed one.
   try {
     await notifySeller(order);
   } catch (error) {
@@ -468,6 +444,14 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`WEKOME payment server listening on port ${PORT}`);
-});
+// Vercel handles the server lifecycle in production.
+// Locally, start the server normally.
+if (!process.env.VERCEL) {
+  const PORT = Number(process.env.PORT || 3001);
+
+  app.listen(PORT, () => {
+    console.log(`WEKOME payment server listening on port ${PORT}`);
+  });
+}
+
+export default app;

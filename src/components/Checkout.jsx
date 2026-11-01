@@ -1,9 +1,11 @@
 
 import { useState } from "react";
-
-const API_URL = "http://localhost:3001";
+const API_URL =
+   "https://wekome-backend-project.vercel.app";
 
 export default function Checkout({ order }) {
+
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 

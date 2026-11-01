@@ -1,3 +1,4 @@
+
 import {
   BatteryCharging,
   CheckCircle,
@@ -33,38 +34,25 @@ function WhatsAppIcon({ size = 20 }) {
 function ProductCTA() {
   return (
     <section
-      id="order"
+      id="product-cta"
       className="relative overflow-hidden bg-gradient-to-br from-[#4c1595] via-[#6d22c8] to-[#3b0b7a] text-white"
     >
-      {/* =========================================
-          BACKGROUND EFFECTS
-      ========================================= */}
-
+      {/* Background effects */}
       <div className="pointer-events-none absolute -left-32 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-purple-300/20 blur-[120px]" />
 
       <div className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-fuchsia-400/20 blur-[120px]" />
 
       <div className="pointer-events-none absolute bottom-0 left-1/3 h-px w-1/2 bg-white/20" />
 
-      {/* =========================================
-          MAIN CONTAINER
-      ========================================= */}
-
+      {/* Main container */}
       <div className="relative mx-auto grid max-w-[1440px] items-center lg:grid-cols-[0.85fr_1.15fr]">
 
-        {/* =========================================
-            LEFT — LIFESTYLE IMAGE
-        ========================================= */}
-
+        {/* Left — Lifestyle image */}
         <div className="relative flex min-h-[430px] items-end justify-center overflow-hidden px-6 pt-16 sm:min-h-[500px] lg:min-h-[530px] lg:justify-start lg:px-12">
-
-          {/* Image Glow */}
           <div className="absolute bottom-20 left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-purple-200/30 blur-[80px]" />
 
-          {/* Decorative Circle */}
           <div className="absolute bottom-[-180px] left-[-80px] h-[500px] w-[500px] rounded-full border border-white/10" />
 
-          {/* Lifestyle Image */}
           <div className="relative z-10 flex items-end justify-center">
             <img
               src="/images/lifestyle/powerbank-woman.png"
@@ -73,25 +61,19 @@ function ProductCTA() {
             />
           </div>
 
-          {/* Floating Power Icon */}
           <div className="absolute left-[12%] top-[28%] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md">
             <Zap size={19} />
           </div>
 
-          {/* Floating Battery Icon */}
           <div className="absolute right-[12%] top-[18%] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md">
             <BatteryCharging size={19} />
           </div>
-
         </div>
 
-        {/* =========================================
-            RIGHT — CTA CONTENT
-        ========================================= */}
-
+        {/* Right — CTA content */}
         <div className="relative px-6 pb-16 pt-4 sm:px-10 sm:pb-20 lg:px-16 lg:py-20">
 
-          {/* Small Label */}
+          {/* Small label */}
           <div className="mb-5 flex items-center gap-3">
             <span className="h-px w-10 bg-purple-200" />
 
@@ -103,9 +85,7 @@ function ProductCTA() {
           {/* Heading */}
           <h2 className="max-w-[700px] text-4xl font-black leading-[0.95] tracking-[-0.045em] sm:text-5xl lg:text-6xl xl:text-7xl">
             Don't Run Out of{" "}
-            <span className="text-purple-200">
-              Power
-            </span>{" "}
+            <span className="text-purple-200">Power</span>{" "}
             Again!
           </h2>
 
@@ -116,15 +96,10 @@ function ProductCTA() {
             you wherever you go.
           </p>
 
-          {/* =========================================
-              PRODUCT HIGHLIGHTS
-          ========================================= */}
-
+          {/* Product highlights */}
           <div className="mt-8 flex flex-wrap gap-3">
-
             <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-md">
               <BatteryCharging size={15} />
-
               <span className="text-[10px] font-bold">
                 {productData.capacity}mAh
               </span>
@@ -132,7 +107,6 @@ function ProductCTA() {
 
             <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-md">
               <Zap size={15} />
-
               <span className="text-[10px] font-bold">
                 {productData.chargingPower} Fast Charging
               </span>
@@ -140,70 +114,53 @@ function ProductCTA() {
 
             <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-md">
               <CheckCircle size={15} />
-
               <span className="text-[10px] font-bold">
                 Safe & Reliable
               </span>
             </div>
-
           </div>
 
-          {/* =========================================
-              CTA BUTTONS
-          ========================================= */}
-
+          {/* CTA buttons */}
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
 
-            {/* WhatsApp */}
+            {/* WhatsApp contact */}
             <a
-              href="https://wa.me/08162409010"
+              href="https://wa.me/2348162409010"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-purple-700 shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
             >
-
-              {/* WhatsApp Logo */}
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition duration-300 group-hover:scale-110">
                 <WhatsAppIcon size={22} />
               </span>
 
               <span className="text-left">
-
                 <span className="block text-[8px] font-semibold uppercase tracking-wider text-purple-400">
-                  Order Now on WhatsApp
+                  Contact Us on WhatsApp
                 </span>
 
                 <span className="text-base font-black">
-                  08162409010
+                  0816 240 9010
                 </span>
-
               </span>
-
             </a>
 
-            {/* Shop Now */}
+            {/* Buy Now */}
             <a
-              href="#contact"
+              href="#website-order"
               className="flex items-center justify-center gap-3 rounded-xl border border-white/30 bg-white/5 px-8 py-4 text-sm font-bold backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/15"
             >
               <ShoppingBag size={18} />
-
-              SHOP NOW
+              BUY NOW
             </a>
-
           </div>
 
-          {/* Bottom Trust Line */}
+          {/* Bottom trust line */}
           <div className="mt-8 flex items-center gap-3 text-[9px] uppercase tracking-[0.15em] text-purple-200/70">
-
             <span className="h-px w-8 bg-purple-200/40" />
-
             Premium quality. Power you can trust.
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

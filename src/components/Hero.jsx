@@ -174,7 +174,7 @@ export default function Hero() {
                   TODAY'S PRICE
                 </p>
                 <p className="text-[29px] font-black leading-none tracking-[-0.04em]">
-                  ₦20,900
+                  ₦50.00
                 </p>
               </div>
 
@@ -361,7 +361,7 @@ export default function Hero() {
                 PROMO PRICE
               </p>
               <p className="text-[21px] font-black leading-none">
-                ₦20,900
+                ₦50.00
               </p>
             </div>
 

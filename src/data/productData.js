@@ -14,7 +14,7 @@ const productData = {
   chargingPower: "22.5W",
 
   originalPrice: "₦24,000",
-  promoPrice: "₦20,900",
+  promoPrice: "₦50.00",
   savings: "₦3,100",
 
   whatsapp: "23481624909010",

@@ -149,7 +149,7 @@ export default function OrderForm() {
                 <div className="rounded-xl bg-purple-50 px-4 py-3">
                   <p className="text-xs text-gray-500">Promotional price</p>
                   <p className="text-xl font-black text-purple-700">
-                    ₦20,900
+                    ₦50.00
                   </p>
                 </div>
               </div>
@@ -350,7 +350,7 @@ export default function OrderForm() {
               <div className="mt-8 rounded-2xl bg-[#f8f5fc] p-5">
                 <div className="flex items-center justify-between gap-4 text-sm">
                   <span className="text-gray-600">
-                    {quantity} × ₦20,900
+                    {quantity} × ₦50.00
                   </span>
                   <span className="font-semibold text-gray-900">
                     ₦{subtotal.toLocaleString("en-NG")}

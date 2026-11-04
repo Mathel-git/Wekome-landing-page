@@ -14,6 +14,7 @@ const app = express();
 
 const PRICE = Number(process.env.PRODUCT_PRICE_NAIRA || 20900);
 const CURRENCY = "NGN";
+console.log("WEKOME PRODUCT PRICE:", PRICE);
 
 const API_BASE_URL = (
   process.env.API_BASE_URL ||

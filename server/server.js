@@ -12,8 +12,17 @@ import {
 
 const app = express();
 
+// ==========================================
+// CONFIGURATION
+// ==========================================
+
 const PRICE = Number(process.env.PRODUCT_PRICE_NAIRA || 20900);
 const CURRENCY = "NGN";
+
+if (!Number.isFinite(PRICE) || PRICE <= 0) {
+  throw new Error("PRODUCT_PRICE_NAIRA must be a valid positive number.");
+}
+
 console.log("WEKOME PRODUCT PRICE:", PRICE);
 
 const API_BASE_URL = (
@@ -25,20 +34,39 @@ const API_BASE_URL = (
 
 const FRONTEND_URL = (process.env.FRONTEND_URL || "").replace(/\/+$/, "");
 
+const allowedOrigins = [
+  FRONTEND_URL,
+  ...(process.env.FRONTEND_URLS || "")
+    .split(",")
+    .map((url) => url.trim().replace(/\/+$/, "")),
+].filter(Boolean);
+
 const allowedColours = ["Black", "White", "Blue", "Purple"];
 
 if (!process.env.PAYSTACK_SECRET_KEY || !FRONTEND_URL) {
   throw new Error("Missing required payment server configuration.");
 }
 
+// ==========================================
+// MIDDLEWARE
+// ==========================================
+
 app.use(
   cors({
-    origin: FRONTEND_URL,
-    methods: ["GET", "POST"],
+    origin(origin, callback) {
+      // Allow requests without an Origin header, such as server-to-server calls.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      console.error("CORS blocked origin:", origin);
+      return callback(new Error("Origin not allowed by CORS."));
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Preserve original request bytes for Paystack webhook verification.
 app.use(
   express.json({
     limit: "50kb",
@@ -47,6 +75,10 @@ app.use(
     },
   })
 );
+
+// ==========================================
+// HELPERS
+// ==========================================
 
 function fail(res, status, message) {
   return res.status(status).json({ message });
@@ -57,6 +89,14 @@ function clean(value, max = 250) {
     ? value.trim().slice(0, max)
     : "";
 }
+
+function calculateAmountKobo(quantity) {
+  return Math.round(PRICE * quantity * 100);
+}
+
+// ==========================================
+// ORDER VALIDATION
+// ==========================================
 
 function validateOrder(input = {}) {
   const name = clean(input.name, 100);
@@ -111,8 +151,13 @@ function validateOrder(input = {}) {
     city,
     state,
     totalNaira: PRICE * quantity,
+    amountKobo: calculateAmountKobo(quantity),
   };
 }
+
+// ==========================================
+// PAYSTACK REQUEST
+// ==========================================
 
 async function paystackRequest(endpoint, options = {}) {
   const response = await fetch(
@@ -130,11 +175,21 @@ async function paystackRequest(endpoint, options = {}) {
   const result = await response.json().catch(() => ({}));
 
   if (!response.ok || !result.status) {
+    console.error("Paystack API error:", {
+      endpoint,
+      status: response.status,
+      message: result.message,
+    });
+
     throw new Error(result.message || "Paystack request failed.");
   }
 
   return result.data;
 }
+
+// ==========================================
+// PAYMENT VERIFICATION
+// ==========================================
 
 async function verifyTransaction(reference) {
   const payment = await paystackRequest(
@@ -170,9 +225,16 @@ async function verifyTransaction(reference) {
     throw new Error("Invalid delivery option.");
   }
 
-  const expectedKobo = PRICE * quantity * 100;
+  const expectedKobo = calculateAmountKobo(quantity);
 
   if (Number(payment.amount) !== expectedKobo) {
+    console.error("Payment amount mismatch:", {
+      expectedKobo,
+      receivedKobo: Number(payment.amount),
+      quantity,
+      configuredPrice: PRICE,
+    });
+
     throw new Error("Payment amount does not match the order.");
   }
 
@@ -190,6 +252,10 @@ async function verifyTransaction(reference) {
     totalNaira: expectedKobo / 100,
   };
 }
+
+// ==========================================
+// ORDER NOTIFICATIONS
+// ==========================================
 
 function formatOrder(order) {
   return [
@@ -278,9 +344,6 @@ async function sendWhatsApp(order) {
   }
 }
 
-// Send email and WhatsApp notifications independently.
-// Without persistent storage, repeated callbacks or webhooks
-// can result in duplicate notifications.
 async function notifySeller(order) {
   const result = {
     emailSent: false,
@@ -304,6 +367,9 @@ async function notifySeller(order) {
   return result;
 }
 
+// ==========================================
+// INITIALIZE PAYSTACK PAYMENT
+// ==========================================
 
 app.post("/api/initialize", async (req, res) => {
   try {
@@ -314,21 +380,19 @@ app.post("/api/initialize", async (req, res) => {
     const order = validateOrder(req.body);
     const reference = `WP66-${randomBytes(12).toString("hex")}`;
 
-    // Calculate the amount in kobo before calling Paystack
-    const amountKobo = Math.round(order.totalNaira * 100);
-
-    console.log("PAYSTACK CHECKOUT:", {
-      price: PRICE,
+    console.log("PAYSTACK INITIALIZATION REQUEST:", {
+      pricePerUnit: PRICE,
       quantity: order.quantity,
       totalNaira: order.totalNaira,
-      amountKobo,
+      amountSentToPaystack: order.amountKobo,
+      currency: CURRENCY,
     });
 
     const data = await paystackRequest("/transaction/initialize", {
       method: "POST",
       body: JSON.stringify({
         email: order.email,
-        amount: String(amountKobo),
+        amount: String(order.amountKobo),
         currency: CURRENCY,
         reference,
         callback_url: `${API_BASE_URL}/api/paystack/callback`,
@@ -348,23 +412,31 @@ app.post("/api/initialize", async (req, res) => {
       }),
     });
 
-    res.json({
+    console.log("PAYSTACK INITIALIZATION SUCCESS:", {
+      reference: data.reference,
+      authorizationUrlCreated: Boolean(data.authorization_url),
+    });
+
+    return res.json({
       authorization_url: data.authorization_url,
       reference: data.reference,
     });
   } catch (error) {
     console.error("Checkout initialization failed:", error.message);
-    fail(res, 400, error.message || "Unable to start checkout.");
+    return fail(res, 400, error.message || "Unable to start checkout.");
   }
 });
 
-// Verify payment independently of notification delivery.
+// ==========================================
+// VERIFY PAYMENT
+// ==========================================
+
 app.get("/api/verify/:reference", async (req, res) => {
   try {
     const order = await verifyTransaction(req.params.reference);
     const notifications = await notifySeller(order);
 
-    res.json({
+    return res.json({
       success: true,
       reference: order.reference,
       notificationsSent:
@@ -372,11 +444,14 @@ app.get("/api/verify/:reference", async (req, res) => {
     });
   } catch (error) {
     console.error("Payment verification failed:", error.message);
-    fail(res, 400, "Payment could not be confirmed.");
+    return fail(res, 400, "Payment could not be confirmed.");
   }
 });
 
-// Paystack redirects the buyer here after checkout.
+// ==========================================
+// PAYSTACK CALLBACK
+// ==========================================
+
 app.get("/api/paystack/callback", async (req, res) => {
   const reference = clean(req.query.reference, 100);
 
@@ -396,18 +471,17 @@ app.get("/api/paystack/callback", async (req, res) => {
     );
   }
 
-  try {
-    await notifySeller(order);
-  } catch (error) {
-    console.error("Order notification processing failed:", error.message);
-  }
+  await notifySeller(order);
 
   return res.redirect(
     `${FRONTEND_URL}/payment-success?reference=${encodeURIComponent(order.reference)}`
   );
 });
 
-// Paystack webhook: verify signature, then verify payment directly with Paystack.
+// ==========================================
+// PAYSTACK WEBHOOK
+// ==========================================
+
 app.post("/api/paystack/webhook", async (req, res) => {
   const signature = req.get("x-paystack-signature") || "";
   const secret = process.env.PAYSTACK_SECRET_KEY;
@@ -448,15 +522,23 @@ app.post("/api/paystack/webhook", async (req, res) => {
   }
 });
 
+// ==========================================
+// HEALTH CHECK
+// ==========================================
+
 app.get("/api/health", (req, res) => {
-  res.json({
+  return res.json({
     ok: true,
     service: "WEKOME checkout",
+    currency: CURRENCY,
+    configuredPrice: PRICE,
   });
 });
 
-// Vercel handles the server lifecycle in production.
-// Locally, start the server normally.
+// ==========================================
+// LOCAL SERVER
+// ==========================================
+
 if (!process.env.VERCEL) {
   const PORT = Number(process.env.PORT || 3001);
 

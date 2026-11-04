@@ -16,7 +16,7 @@ const app = express();
 // CONFIGURATION
 // ==========================================
 
-const PRICE = 50;
+const PRICE = 100;
 const CURRENCY = "NGN";
 
 if (!Number.isFinite(PRICE) || PRICE <= 0) {

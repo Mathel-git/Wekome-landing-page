@@ -18,7 +18,7 @@ const app = express();
 
 // TEMPORARY TEST PRICE
 // Change to 20900 before accepting real orders.
-const PRICE = 50;
+const PRICE = 100;
 const CURRENCY = "NGN";
 
 console.log("WEKOME PRODUCT PRICE:", PRICE);

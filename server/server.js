@@ -315,10 +315,19 @@ app.post("/api/initialize", async (req, res) => {
     const reference = `WP66-${randomBytes(12).toString("hex")}`;
 
     const data = await paystackRequest("/transaction/initialize", {
+      const amountKobo = Math.round(order.totalNaira * 100);
+
+console.log("PAYSTACK CHECKOUT:", {
+  price: PRICE,
+  quantity: order.quantity,
+  totalNaira: order.totalNaira,
+  amountKobo,
+});
       method: "POST",
       body: JSON.stringify({
         email: order.email,
-        amount: String(order.totalNaira * 100),
+        amount: String(amountKobo),
+        
         currency: CURRENCY,
         reference,
         callback_url: `${API_BASE_URL}/api/paystack/callback`,

@@ -304,7 +304,7 @@ async function notifySeller(order) {
   return result;
 }
 
-// Start a Paystack checkout.
+
 app.post("/api/initialize", async (req, res) => {
   try {
     if (!API_BASE_URL) {
@@ -314,20 +314,21 @@ app.post("/api/initialize", async (req, res) => {
     const order = validateOrder(req.body);
     const reference = `WP66-${randomBytes(12).toString("hex")}`;
 
-    const data = await paystackRequest("/transaction/initialize", {
-      const amountKobo = Math.round(order.totalNaira * 100);
+    // Calculate the amount in kobo before calling Paystack
+    const amountKobo = Math.round(order.totalNaira * 100);
 
-console.log("PAYSTACK CHECKOUT:", {
-  price: PRICE,
-  quantity: order.quantity,
-  totalNaira: order.totalNaira,
-  amountKobo,
-});
+    console.log("PAYSTACK CHECKOUT:", {
+      price: PRICE,
+      quantity: order.quantity,
+      totalNaira: order.totalNaira,
+      amountKobo,
+    });
+
+    const data = await paystackRequest("/transaction/initialize", {
       method: "POST",
       body: JSON.stringify({
         email: order.email,
         amount: String(amountKobo),
-        
         currency: CURRENCY,
         reference,
         callback_url: `${API_BASE_URL}/api/paystack/callback`,

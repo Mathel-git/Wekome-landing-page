@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ShoppingBag, CheckCircle2, ArrowLeft } from "lucide-react";
 import Checkout from "./Checkout";
 
-const UNIT_PRICE = 20900;
+const UNIT_PRICE = 18000;
 
 const colors = [
   { name: "Black", hex: "#222222" },
@@ -149,7 +149,7 @@ export default function OrderForm() {
                 <div className="rounded-xl bg-purple-50 px-4 py-3">
                   <p className="text-xs text-gray-500">Promotional price</p>
                   <p className="text-xl font-black text-purple-700">
-                    ₦50.00
+                    ₦18,000
                   </p>
                 </div>
               </div>
@@ -350,7 +350,7 @@ export default function OrderForm() {
               <div className="mt-8 rounded-2xl bg-[#f8f5fc] p-5">
                 <div className="flex items-center justify-between gap-4 text-sm">
                   <span className="text-gray-600">
-                    {quantity} × ₦50.00
+                    {quantity} × ₦18,000
                   </span>
                   <span className="font-semibold text-gray-900">
                     ₦{subtotal.toLocaleString("en-NG")}

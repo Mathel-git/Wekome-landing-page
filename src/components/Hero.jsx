@@ -174,13 +174,13 @@ export default function Hero() {
                   TODAY'S PRICE
                 </p>
                 <p className="text-[29px] font-black leading-none tracking-[-0.04em]">
-                  ₦50.00
+                  ₦18,000
                 </p>
               </div>
 
               <div className="rounded-full border border-purple-400/20 bg-purple-500/[0.08] px-3 py-1.5">
                 <span className="text-[8px] font-bold text-purple-300">
-                  SAVE ₦3,100
+                  SAVE ₦6,000
                 </span>
               </div>
             </div>
@@ -361,13 +361,13 @@ export default function Hero() {
                 PROMO PRICE
               </p>
               <p className="text-[21px] font-black leading-none">
-                ₦50.00
+                ₦18,000
               </p>
             </div>
 
             <div className="rounded-full border border-purple-400/20 bg-purple-500/[0.08] px-2 py-1">
               <span className="text-[6px] font-bold text-purple-300">
-                SAVE ₦3,100
+                SAVE ₦6,000
               </span>
             </div>
           </div>
